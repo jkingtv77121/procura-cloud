@@ -2,7 +2,7 @@ export const page = String.raw`<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#0b0a09">
+<meta name="theme-color" content="#ffffff">
 <title>Procura V2 — Evidence-led vendor decisions</title>
 <style>
 :root{--paper:#fbf8f3;--surface:#fffdf9;--ink:#2b1b14;--muted:#75675f;--soft:#a79a91;--line:#e9ded5;--line-strong:#d7c6b9;--orange:#ec6813;--orange-deep:#c84a08;--orange-pale:#fff1e5;--green:#23734b;--green-pale:#eaf6ee;--red:#ad3f2c;--red-pale:#fff0ec;--amber:#a26413;--amber-pale:#fff5df;--shadow:0 14px 42px rgba(70,42,25,.075);--display:Manrope,Inter,system-ui,sans-serif;--body:Inter,system-ui,-apple-system,"Segoe UI",sans-serif}
@@ -34,317 +34,309 @@ export const page = String.raw`<!doctype html>
 @media(prefers-reduced-motion:reduce){.pointer-reactive{translate:none!important}.pointer-reactive::after{display:none}.procura-tap,.btn:hover .icon{animation:none!important}}
 </style>
 <style id="procura-v2-design">
-:root{
- --paper:#0b0a09;--surface:#141210;--ink:#f3ede6;--muted:#aaa097;--soft:#847a72;
- --line:rgba(243,237,230,.12);--line-strong:rgba(243,237,230,.2);
- --orange:#9C3121;--orange-deep:#ba4b37;--orange-pale:#2a1713;
- --green:#a94b39;--green-pale:#261713;--red:#c26755;--red-pale:#2a1714;
- --amber:#b87c63;--amber-pale:#291913;--shadow:0 24px 72px rgba(0,0,0,.42);
- --display:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
- --body:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
-}
+:root{--paper:#ffffff;--surface:#fffefa;--ink:#2b1b14;--muted:#75675f;--soft:#89786c;--line:rgba(43,27,20,.12);--line-strong:rgba(43,27,20,.2);--orange:#9C3121;--orange-deep:#ba4b37;--orange-pale:#fff1ed;--green:#23734b;--green-pale:#eaf6ee;--red:#9C3121;--red-pale:#fff0ec;--amber:#9b5b11;--amber-pale:#fff5df;--shadow:0 22px 62px rgba(50,29,20,.12);--display:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;--body:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
 html{scroll-behavior:smooth;scroll-padding-top:88px}
-body.procura-v2{margin:0;min-height:100vh;background:#0b0a09;color:#f3ede6;font:15px/1.58 var(--body);-webkit-font-smoothing:antialiased}
-body.procura-v2:before{position:fixed;inset:0;z-index:-1;content:"";pointer-events:none;background:radial-gradient(ellipse at 83% 12%,rgba(156,49,33,.12),transparent 34%),radial-gradient(ellipse at 5% 80%,rgba(156,49,33,.07),transparent 30%)}
+body.procura-v2{margin:0;min-height:100vh;background:#ffffff;color:#2b1b14;font:15px/1.58 var(--body);-webkit-font-smoothing:antialiased}
+body.procura-v2:before{position:fixed;inset:0;z-index:-1;content:"";pointer-events:none;background:radial-gradient(ellipse at 83% 12%,rgba(156,49,33,.055),transparent 34%),radial-gradient(ellipse at 5% 80%,rgba(156,49,33,.03),transparent 30%)}
 body.procura-v2 button,body.procura-v2 input,body.procura-v2 select{font:inherit}
 body.procura-v2 button{cursor:pointer}
 body.procura-v2 a{color:inherit;text-decoration:none}
-body.procura-v2 :focus-visible{outline:2px solid #c26755;outline-offset:4px}
-body.procura-v2 ::selection{background:#9C3121;color:#fff5ef}
-body.procura-v2 .muted{color:#aaa097}
+body.procura-v2 :focus-visible{outline:2px solid #9C3121;outline-offset:4px}
+body.procura-v2 ::selection{background:#9C3121;color:#2b1b14}
+body.procura-v2 .muted{color:#5f5048}
 body.procura-v2 .tiny{font-size:12px}
 body.procura-v2 .hidden{display:none!important}
 body.procura-v2 .mono{font-variant-numeric:tabular-nums}
-body.procura-v2 .eyebrow{display:flex;align-items:center;gap:9px;color:#c26755;font-size:10px;font-weight:800;letter-spacing:.17em;text-transform:uppercase}
-body.procura-v2 .logo{display:inline-flex;align-items:center;gap:11px;color:#f5eee8;font-size:20px;font-weight:780;letter-spacing:-.055em}
-body.procura-v2 .logo-mark{display:grid;place-items:center;width:34px;height:34px;border:1px solid rgba(194,79,57,.55);border-radius:11px;color:#f7eee7;background:linear-gradient(145deg,#a6402d,#6c241a);box-shadow:0 8px 24px rgba(156,49,33,.24)}
+body.procura-v2 .eyebrow{display:flex;align-items:center;gap:9px;color:#9C3121;font-size:10px;font-weight:800;letter-spacing:.17em;text-transform:uppercase}
+body.procura-v2 .logo{display:inline-flex;align-items:center;gap:11px;color:#2b1b14;font-size:20px;font-weight:780;letter-spacing:-.055em}
+body.procura-v2 .logo-mark{display:grid;place-items:center;width:34px;height:34px;border:1px solid rgba(194,79,57,.55);border-radius:11px;color:#2b1b14;background:linear-gradient(145deg,#a6402d,#6c241a);box-shadow:0 8px 24px rgba(156,49,33,.24)}
 body.procura-v2 .logo-mark svg{width:18px;height:18px;stroke:currentColor}
-body.procura-v2 .brand-v2{padding:3px 6px;border:1px solid rgba(194,79,57,.34);border-radius:5px;color:#c26755;font-size:8px;font-weight:800;letter-spacing:.12em}
-body.procura-v2 .btn{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:44px;padding:0 17px;border:1px solid var(--line-strong);border-radius:10px;color:#eee7df;background:#171513;font-size:13px;font-weight:680;letter-spacing:-.01em;transition:transform .2s cubic-bezier(.2,.8,.2,1),box-shadow .22s ease,border-color .2s ease,background .2s ease,color .2s ease}
-body.procura-v2 .btn:hover{transform:translateY(-2px);border-color:rgba(194,79,57,.5);box-shadow:0 12px 30px rgba(0,0,0,.32)}
+body.procura-v2 .brand-v2{padding:3px 6px;border:1px solid rgba(194,79,57,.34);border-radius:5px;color:#9C3121;font-size:8px;font-weight:800;letter-spacing:.12em}
+body.procura-v2 .btn{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:44px;padding:0 17px;border:1px solid var(--line-strong);border-radius:10px;color:#2b1b14;background:#ffffff;font-size:13px;font-weight:680;letter-spacing:-.01em;transition:transform .2s cubic-bezier(.2,.8,.2,1),box-shadow .22s ease,border-color .2s ease,background .2s ease,color .2s ease}
+body.procura-v2 .btn:hover{transform:translateY(-2px);border-color:rgba(194,79,57,.5);box-shadow:0 12px 30px rgba(50,29,20,0.115)}
 body.procura-v2 .btn:active{transform:translateY(0) scale(.985)}
 body.procura-v2 .btn:disabled{opacity:.48;cursor:not-allowed;transform:none;box-shadow:none}
-body.procura-v2 .btn-primary{border-color:#9C3121;color:#fff6f1;background:linear-gradient(135deg,#a53b29,#81291e);box-shadow:0 8px 25px rgba(156,49,33,.2)}
+body.procura-v2 .btn-primary{border-color:#9C3121;color:#2b1b14;background:linear-gradient(135deg,#a53b29,#81291e);box-shadow:0 8px 25px rgba(156,49,33,.2)}
 body.procura-v2 .btn-primary:hover{border-color:#c26755;background:linear-gradient(135deg,#b44935,#963225);box-shadow:0 12px 32px rgba(156,49,33,.28)}
-body.procura-v2 .btn-quiet{border-color:var(--line);color:#d2c9c1;background:rgba(255,255,255,.025)}
-body.procura-v2 .btn-soft{border-color:rgba(194,79,57,.28);color:#d38a79;background:rgba(156,49,33,.11)}
-body.procura-v2 .btn-danger{border-color:rgba(194,79,57,.38);color:#d18a7b;background:rgba(156,49,33,.1)}
+body.procura-v2 .btn-quiet{border-color:var(--line);color:#2b1b14;background:rgba(57,37,27,.014)}
+body.procura-v2 .btn-soft{border-color:rgba(194,79,57,.28);color:#9C3121;background:rgba(156,49,33,.11)}
+body.procura-v2 .btn-danger{border-color:rgba(194,79,57,.38);color:#9C3121;background:rgba(156,49,33,.1)}
 body.procura-v2 .btn-small{min-height:35px;padding:0 12px;border-radius:8px;font-size:11px}
 body.procura-v2 .icon{width:17px;height:17px;stroke:currentColor}
-body.procura-v2 .public-nav{position:sticky;top:0;z-index:30;display:flex;align-items:center;justify-content:space-between;gap:24px;height:72px;padding:0 clamp(20px,5vw,78px);border-bottom:1px solid rgba(243,237,230,.08);background:rgba(11,10,9,.82);backdrop-filter:blur(18px)}
-body.procura-v2 .public-nav nav{display:flex;align-items:center;gap:29px;color:#aaa097;font-size:12px;font-weight:560}
+body.procura-v2 .public-nav{position:sticky;top:0;z-index:30;display:flex;align-items:center;justify-content:space-between;gap:24px;height:72px;padding:0 clamp(20px,5vw,78px);border-bottom:1px solid rgba(64,42,31,.116);background:rgba(255,255,255,.9);backdrop-filter:blur(18px)}
+body.procura-v2 .public-nav nav{display:flex;align-items:center;gap:29px;color:#5f5048;font-size:12px;font-weight:560}
 body.procura-v2 .public-nav nav a{transition:color .18s ease}
-body.procura-v2 .public-nav nav a:hover{color:#f2eae3}
+body.procura-v2 .public-nav nav a:hover{color:#2b1b14}
 body.procura-v2 .nav-actions{display:flex;align-items:center;gap:10px}
 body.procura-v2 .landing{overflow:hidden}
 body.procura-v2 .hero{position:relative;isolation:isolate;display:grid;grid-template-columns:minmax(0,1.03fr) minmax(410px,.97fr);align-items:center;gap:clamp(34px,5vw,76px);width:min(1440px,100%);min-height:690px;margin:auto;padding:88px clamp(24px,6vw,94px) 92px}
 body.procura-v2 .hero:before{position:absolute;z-index:-2;top:5%;right:-18%;width:min(720px,70vw);aspect-ratio:1;border:1px solid rgba(156,49,33,.12);border-radius:50%;content:"";background:radial-gradient(circle at 50% 50%,rgba(156,49,33,.14),rgba(156,49,33,.04) 34%,transparent 70%);filter:blur(2px)}
-body.procura-v2 .hero:after{position:absolute;z-index:-1;inset:12% -2% 5% 42%;content:"";pointer-events:none;opacity:.22;background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);background-size:40px 40px;mask-image:linear-gradient(90deg,transparent,black 30%,transparent)}
+body.procura-v2 .hero:after{position:absolute;z-index:-1;inset:12% -2% 5% 42%;content:"";pointer-events:none;opacity:.22;background-image:linear-gradient(rgba(57,37,27,.019) 1px,transparent 1px),linear-gradient(90deg,rgba(57,37,27,.019) 1px,transparent 1px);background-size:40px 40px;mask-image:linear-gradient(90deg,transparent,black 30%,transparent)}
 body.procura-v2 .hero-copy{position:relative;z-index:1;max-width:650px}
-body.procura-v2 .hero-copy h1{max-width:700px;margin:19px 0 22px;color:#f3ede6;font-size:clamp(46px,6.1vw,84px);font-weight:760;line-height:.99;letter-spacing:-.078em}
-body.procura-v2 .hero-copy h1 span{color:#c26755;background:linear-gradient(100deg,#d08a78,#9C3121 72%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-body.procura-v2 .hero-copy>p{max-width:565px;margin:0;color:#b8aea5;font-size:16px;line-height:1.8}
+body.procura-v2 .hero-copy h1{max-width:700px;margin:19px 0 22px;color:#2b1b14;font-size:clamp(46px,6.1vw,84px);font-weight:760;line-height:.99;letter-spacing:-.078em}
+body.procura-v2 .hero-copy h1 span{color:#9C3121;background:linear-gradient(100deg,#9C3121,#9C3121 72%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+body.procura-v2 .hero-copy>p{max-width:565px;margin:0;color:#5f5048;font-size:16px;line-height:1.8}
 body.procura-v2 .hero-actions{display:flex;flex-wrap:wrap;gap:11px;margin-top:29px}
 body.procura-v2 .hero-actions .btn{min-height:48px;padding-inline:19px}
-body.procura-v2 .hero-proof{display:flex;align-items:center;gap:10px;margin-top:25px;color:#92877e;font-size:11px}
+body.procura-v2 .hero-proof{display:flex;align-items:center;gap:10px;margin-top:25px;color:#74645b;font-size:11px}
 body.procura-v2 .proof-dot{width:7px;height:7px;border-radius:50%;background:#b4523e;box-shadow:0 0 0 5px rgba(156,49,33,.12)}
 body.procura-v2 .preview-frame{position:relative;isolation:isolate;perspective:1100px}
 body.procura-v2 .preview-frame:before{position:absolute;inset:10% 8%;z-index:-1;border-radius:50%;content:"";background:rgba(156,49,33,.18);filter:blur(70px)}
-body.procura-v2 .preview-card{position:relative;overflow:hidden;padding:23px;border:1px solid rgba(243,237,230,.15);border-radius:20px;background:linear-gradient(145deg,rgba(30,26,23,.98),rgba(17,15,13,.98));box-shadow:0 32px 90px rgba(0,0,0,.54),0 1px 0 rgba(255,255,255,.04) inset;transform-style:preserve-3d;transition:transform .28s cubic-bezier(.2,.8,.2,1),border-color .25s ease,box-shadow .25s ease}
+body.procura-v2 .preview-card{position:relative;overflow:hidden;padding:23px;border:1px solid rgba(64,42,31,.217);border-radius:20px;background:linear-gradient(145deg,rgba(255,255,255,.98),rgba(250,247,244,.98));box-shadow:0 32px 90px rgba(50,29,20,0.194),0 1px 0 rgba(57,37,27,.022) inset;transform-style:preserve-3d;transition:transform .28s cubic-bezier(.2,.8,.2,1),border-color .25s ease,box-shadow .25s ease}
 body.procura-v2 .preview-card:before{position:absolute;top:-48%;right:-6%;width:65%;height:65%;border-radius:50%;content:"";pointer-events:none;background:radial-gradient(circle,rgba(156,49,33,.2),transparent 72%);filter:blur(25px)}
 body.procura-v2 .preview-head{position:relative;display:flex;align-items:flex-start;justify-content:space-between;gap:12px;padding-bottom:16px;border-bottom:1px solid var(--line)}
-body.procura-v2 .preview-title{color:#f1eae3;font-size:13px;font-weight:710;letter-spacing:-.02em}
-body.procura-v2 .live-tag{padding:4px 7px;border:1px solid rgba(194,79,57,.32);border-radius:5px;color:#c77b68;background:rgba(156,49,33,.1);font-size:8px;font-weight:800;letter-spacing:.1em}
-body.procura-v2 .preview-switch{position:relative;display:flex;gap:4px;margin:16px 0 13px;padding:4px;border:1px solid rgba(243,237,230,.08);border-radius:9px;background:#100f0d}
-body.procura-v2 .preview-tab{flex:1;min-height:30px;padding:0 7px;border:1px solid transparent;border-radius:6px;color:#847a72;background:transparent;font-size:9px;font-weight:730;transition:color .18s ease,border .18s ease,background .18s ease}
-body.procura-v2 .preview-tab:hover{color:#ddd3ca}
-body.procura-v2 .preview-tab.active{border-color:rgba(194,79,57,.3);color:#e8c4ba;background:rgba(156,49,33,.15)}
+body.procura-v2 .preview-title{color:#2b1b14;font-size:13px;font-weight:710;letter-spacing:-.02em}
+body.procura-v2 .live-tag{padding:4px 7px;border:1px solid rgba(194,79,57,.32);border-radius:5px;color:#9C3121;background:rgba(156,49,33,.1);font-size:8px;font-weight:800;letter-spacing:.1em}
+body.procura-v2 .preview-switch{position:relative;display:flex;gap:4px;margin:16px 0 13px;padding:4px;border:1px solid rgba(64,42,31,.116);border-radius:9px;background:#faf8f5}
+body.procura-v2 .preview-tab{flex:1;min-height:30px;padding:0 7px;border:1px solid transparent;border-radius:6px;color:#74645b;background:transparent;font-size:9px;font-weight:730;transition:color .18s ease,border .18s ease,background .18s ease}
+body.procura-v2 .preview-tab:hover{color:#2b1b14}
+body.procura-v2 .preview-tab.active{border-color:rgba(194,79,57,.3);color:#9C3121;background:rgba(156,49,33,.15)}
 body.procura-v2 .preview-scene{position:relative;min-height:252px;animation:scene-in .28s ease both}
 body.procura-v2 .preview-scene[hidden]{display:none}
-body.procura-v2 .mini-label{margin:3px 0 9px;color:#82786f;font-size:8px;font-weight:800;letter-spacing:.14em;text-transform:uppercase}
-body.procura-v2 .demo-rfp{display:flex;align-items:center;gap:10px;margin:10px 0;padding:12px;border:1px solid rgba(243,237,230,.1);border-radius:11px;background:rgba(255,255,255,.025)}
-body.procura-v2 .file-icon{display:grid;place-items:center;width:36px;height:39px;border:1px solid rgba(194,79,57,.3);border-radius:8px;color:#cd7966;background:rgba(156,49,33,.13)}
+body.procura-v2 .mini-label{margin:3px 0 9px;color:#74645b;font-size:8px;font-weight:800;letter-spacing:.14em;text-transform:uppercase}
+body.procura-v2 .demo-rfp{display:flex;align-items:center;gap:10px;margin:10px 0;padding:12px;border:1px solid rgba(64,42,31,.145);border-radius:11px;background:rgba(57,37,27,.014)}
+body.procura-v2 .file-icon{display:grid;place-items:center;width:36px;height:39px;border:1px solid rgba(194,79,57,.3);border-radius:8px;color:#9C3121;background:rgba(156,49,33,.13)}
 body.procura-v2 .file-icon svg{width:18px}
 body.procura-v2 .demo-rfp strong,body.procura-v2 .demo-rfp small{display:block}
-body.procura-v2 .demo-rfp strong{color:#e9e1da;font-size:10px}
-body.procura-v2 .demo-rfp small{margin-top:3px;color:#92877e;font-size:9px}
+body.procura-v2 .demo-rfp strong{color:#2b1b14;font-size:10px}
+body.procura-v2 .demo-rfp small{margin-top:3px;color:#74645b;font-size:9px}
 body.procura-v2 .preview-detail{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-top:13px;padding:11px 12px;border-left:2px solid #9C3121;background:linear-gradient(90deg,rgba(156,49,33,.12),transparent)}
 body.procura-v2 .preview-detail b,body.procura-v2 .preview-detail small{display:block}
-body.procura-v2 .preview-detail b{color:#e3d8ce;font-size:10px}
-body.procura-v2 .preview-detail small{margin-top:3px;color:#8f857c;font-size:9px}
-body.procura-v2 .preview-metric{color:#d48876;font-size:14px;font-weight:780;white-space:nowrap}
-body.procura-v2 .demo-label{margin:16px 0 7px;color:#8e8379;font-size:8px;font-weight:800;letter-spacing:.12em;text-transform:uppercase}
-body.procura-v2 .vendor-row{position:relative;display:grid;grid-template-columns:26px minmax(0,1fr) auto auto;align-items:center;gap:8px;padding:9px 7px;border-bottom:1px solid rgba(243,237,230,.075);border-radius:7px;color:#d8d0c8;font-size:10px;transition:transform .2s ease,background .2s ease}
-body.procura-v2 .vendor-row:hover{transform:translateX(3px);background:rgba(255,255,255,.035)}
-body.procura-v2 .rank-dot{display:grid;place-items:center;width:23px;height:23px;border:1px solid rgba(194,79,57,.24);border-radius:7px;color:#d58b79;background:rgba(156,49,33,.12);font-size:9px;font-weight:800}
-body.procura-v2 .vendor-score{color:#eee5dc;font-size:10px;font-weight:780}
-body.procura-v2 .mini-decision{padding:3px 6px;border:1px solid rgba(194,79,57,.25);border-radius:5px;color:#c98675;background:rgba(156,49,33,.1);font-size:7px;font-weight:820;letter-spacing:.05em}
-body.procura-v2 .preview-foot{display:flex;justify-content:space-between;gap:12px;margin-top:12px;color:#8e8379;font-size:8px}
-body.procura-v2 .coverage-track{height:4px;overflow:hidden;margin-top:8px;border-radius:10px;background:rgba(243,237,230,.1)}
+body.procura-v2 .preview-detail b{color:#2b1b14;font-size:10px}
+body.procura-v2 .preview-detail small{margin-top:3px;color:#74645b;font-size:9px}
+body.procura-v2 .preview-metric{color:#9C3121;font-size:14px;font-weight:780;white-space:nowrap}
+body.procura-v2 .demo-label{margin:16px 0 7px;color:#74645b;font-size:8px;font-weight:800;letter-spacing:.12em;text-transform:uppercase}
+body.procura-v2 .vendor-row{position:relative;display:grid;grid-template-columns:26px minmax(0,1fr) auto auto;align-items:center;gap:8px;padding:9px 7px;border-bottom:1px solid rgba(64,42,31,.109);border-radius:7px;color:#2b1b14;font-size:10px;transition:transform .2s ease,background .2s ease}
+body.procura-v2 .vendor-row:hover{transform:translateX(3px);background:rgba(57,37,27,.019)}
+body.procura-v2 .rank-dot{display:grid;place-items:center;width:23px;height:23px;border:1px solid rgba(194,79,57,.24);border-radius:7px;color:#9C3121;background:rgba(156,49,33,.12);font-size:9px;font-weight:800}
+body.procura-v2 .vendor-score{color:#2b1b14;font-size:10px;font-weight:780}
+body.procura-v2 .mini-decision{padding:3px 6px;border:1px solid rgba(194,79,57,.25);border-radius:5px;color:#9C3121;background:rgba(156,49,33,.1);font-size:7px;font-weight:820;letter-spacing:.05em}
+body.procura-v2 .preview-foot{display:flex;justify-content:space-between;gap:12px;margin-top:12px;color:#74645b;font-size:8px}
+body.procura-v2 .coverage-track{height:4px;overflow:hidden;margin-top:8px;border-radius:10px;background:rgba(64,42,31,.145)}
 body.procura-v2 .coverage-track span{display:block;height:100%;border-radius:10px;background:linear-gradient(90deg,#9C3121,#c26755);animation:coverage-in 1s .18s ease both}
-body.procura-v2 .hero-orbit{position:absolute;top:-20px;right:-19px;z-index:4;display:grid;place-items:center;width:56px;height:56px;border:1px solid rgba(243,237,230,.15);border-radius:15px;color:#cd7966;background:#171311;box-shadow:0 16px 34px rgba(0,0,0,.38);animation:float-soft 6s ease-in-out infinite}
-body.procura-v2 .hero-float{position:absolute;z-index:4;display:flex;align-items:center;gap:9px;min-width:166px;padding:10px 12px;border:1px solid rgba(243,237,230,.13);border-radius:11px;color:#e4dcd4;background:rgba(23,20,18,.92);box-shadow:0 15px 35px rgba(0,0,0,.38);pointer-events:none;animation:float-soft 7s ease-in-out infinite}
+body.procura-v2 .hero-orbit{position:absolute;top:-20px;right:-19px;z-index:4;display:grid;place-items:center;width:56px;height:56px;border:1px solid rgba(64,42,31,.217);border-radius:15px;color:#9C3121;background:#fffdfa;box-shadow:0 16px 34px rgba(50,29,20,0.137);animation:float-soft 6s ease-in-out infinite}
+body.procura-v2 .hero-float{position:absolute;z-index:4;display:flex;align-items:center;gap:9px;min-width:166px;padding:10px 12px;border:1px solid rgba(64,42,31,.189);border-radius:11px;color:#2b1b14;background:rgba(255,255,255,.94);box-shadow:0 15px 35px rgba(50,29,20,0.137);pointer-events:none;animation:float-soft 7s ease-in-out infinite}
 body.procura-v2 .hero-float--rfp{top:18%;left:-30px}
 body.procura-v2 .hero-float--evidence{right:-27px;bottom:17%;animation-delay:-3.4s}
 body.procura-v2 .hero-float b,body.procura-v2 .hero-float small{display:block}
 body.procura-v2 .hero-float b{font-size:9px}
-body.procura-v2 .hero-float small{margin-top:2px;color:#9c9187;font-size:8px}
-body.procura-v2 .float-glyph{display:grid;place-items:center;width:28px;height:29px;border:1px solid rgba(194,79,57,.3);border-radius:7px;color:#d08270;background:rgba(156,49,33,.12);font-size:9px;font-weight:850}
-body.procura-v2 .float-glyph.good{border-color:rgba(194,79,57,.3);color:#d08270;background:rgba(156,49,33,.12)}
-body.procura-v2 .steps{position:relative;padding:74px clamp(22px,7vw,98px) 86px;border-top:1px solid rgba(243,237,230,.08);background:linear-gradient(180deg,rgba(255,255,255,.015),transparent)}
+body.procura-v2 .hero-float small{margin-top:2px;color:#74645b;font-size:8px}
+body.procura-v2 .float-glyph{display:grid;place-items:center;width:28px;height:29px;border:1px solid rgba(194,79,57,.3);border-radius:7px;color:#9C3121;background:rgba(156,49,33,.12);font-size:9px;font-weight:850}
+body.procura-v2 .float-glyph.good{border-color:rgba(194,79,57,.3);color:#9C3121;background:rgba(156,49,33,.12)}
+body.procura-v2 .steps{position:relative;padding:74px clamp(22px,7vw,98px) 86px;border-top:1px solid rgba(64,42,31,.116);background:linear-gradient(180deg,rgba(57,37,27,.008),transparent)}
 body.procura-v2 .steps-inner{width:min(1180px,100%);margin:auto}
 body.procura-v2 .steps-head{display:flex;align-items:flex-end;justify-content:space-between;gap:32px;margin-bottom:34px}
-body.procura-v2 .steps-head h2{max-width:600px;margin:10px 0 0;color:#f1e9e2;font-size:clamp(25px,3vw,38px);font-weight:690;line-height:1.15;letter-spacing:-.055em}
-body.procura-v2 .steps-head p{max-width:390px;margin:0;color:#a69c93;font-size:12px;line-height:1.8}
+body.procura-v2 .steps-head h2{max-width:600px;margin:10px 0 0;color:#2b1b14;font-size:clamp(25px,3vw,38px);font-weight:690;line-height:1.15;letter-spacing:-.055em}
+body.procura-v2 .steps-head p{max-width:390px;margin:0;color:#74645b;font-size:12px;line-height:1.8}
 body.procura-v2 .steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--line)}
 body.procura-v2 .step{padding:23px 27px 0 0}
 body.procura-v2 .step+.step{padding-left:27px;border-left:1px solid var(--line)}
-body.procura-v2 .step-num{color:#c26755;font-size:10px;font-weight:800;letter-spacing:.12em}
-body.procura-v2 .step h3{margin:11px 0 6px;color:#ede5dd;font-size:14px;font-weight:700;letter-spacing:-.025em}
-body.procura-v2 .step p{max-width:300px;margin:0;color:#a1978e;font-size:11px;line-height:1.8}
-body.procura-v2 .public-footer{display:flex;justify-content:space-between;gap:20px;padding:20px clamp(20px,5vw,78px);border-top:1px solid rgba(243,237,230,.08);color:#8e837a;background:#0a0908;font-size:10px}
+body.procura-v2 .step-num{color:#9C3121;font-size:10px;font-weight:800;letter-spacing:.12em}
+body.procura-v2 .step h3{margin:11px 0 6px;color:#2b1b14;font-size:14px;font-weight:700;letter-spacing:-.025em}
+body.procura-v2 .step p{max-width:300px;margin:0;color:#74645b;font-size:11px;line-height:1.8}
+body.procura-v2 .public-footer{display:flex;justify-content:space-between;gap:20px;padding:20px clamp(20px,5vw,78px);border-top:1px solid rgba(64,42,31,.116);color:#74645b;background:#f7f3ef;font-size:10px}
 body.procura-v2 .auth-wrap{position:relative;display:grid;grid-template-columns:minmax(0,1fr) minmax(370px,.82fr);align-items:center;gap:clamp(32px,7vw,94px);width:min(1200px,100%);min-height:calc(100vh - 72px);margin:auto;padding:62px clamp(24px,5vw,72px)}
 body.procura-v2 .auth-story{position:relative;padding:20px 0}
-body.procura-v2 .auth-story h1{max-width:610px;margin:17px 0;color:#f3ede6;font-size:clamp(36px,4.8vw,60px);font-weight:740;line-height:1.04;letter-spacing:-.07em}
-body.procura-v2 .auth-story>p{max-width:500px;color:#aea49b;font-size:14px;line-height:1.8}
+body.procura-v2 .auth-story h1{max-width:610px;margin:17px 0;color:#2b1b14;font-size:clamp(36px,4.8vw,60px);font-weight:740;line-height:1.04;letter-spacing:-.07em}
+body.procura-v2 .auth-story>p{max-width:500px;color:#5f5048;font-size:14px;line-height:1.8}
 body.procura-v2 .auth-step{display:flex;gap:14px;max-width:500px;margin-top:19px;transition:transform .2s ease}
 body.procura-v2 .auth-step:hover{transform:translateX(3px)}
-body.procura-v2 .auth-step b{display:grid;place-items:center;flex:0 0 29px;height:29px;border:1px solid rgba(194,79,57,.33);border-radius:8px;color:#ce806e;background:rgba(156,49,33,.1);font-size:9px}
-body.procura-v2 .auth-step span{color:#aaa097;font-size:11px}
-body.procura-v2 .auth-sync{display:flex;align-items:center;gap:10px;max-width:420px;margin:28px 0 0;padding:12px;border:1px solid var(--line);border-radius:10px;background:rgba(255,255,255,.025)}
-body.procura-v2 .auth-device{display:grid;place-items:center;width:35px;height:30px;border:1px solid rgba(243,237,230,.13);border-radius:7px;color:#cf806e;background:rgba(156,49,33,.08)}
-body.procura-v2 .auth-sync-line{position:relative;flex:1;height:1px;overflow:hidden;background:rgba(243,237,230,.13)}
+body.procura-v2 .auth-step b{display:grid;place-items:center;flex:0 0 29px;height:29px;border:1px solid rgba(194,79,57,.33);border-radius:8px;color:#9C3121;background:rgba(156,49,33,.1);font-size:9px}
+body.procura-v2 .auth-step span{color:#5f5048;font-size:11px}
+body.procura-v2 .auth-sync{display:flex;align-items:center;gap:10px;max-width:420px;margin:28px 0 0;padding:12px;border:1px solid var(--line);border-radius:10px;background:rgba(57,37,27,.014)}
+body.procura-v2 .auth-device{display:grid;place-items:center;width:35px;height:30px;border:1px solid rgba(64,42,31,.189);border-radius:7px;color:#9C3121;background:rgba(156,49,33,.08)}
+body.procura-v2 .auth-sync-line{position:relative;flex:1;height:1px;overflow:hidden;background:rgba(64,42,31,.189)}
 body.procura-v2 .auth-sync-line:after{position:absolute;top:-1px;left:-12px;width:12px;height:3px;border-radius:3px;content:"";background:#9C3121;animation:sync-travel 3.2s ease-in-out infinite}
 body.procura-v2 .auth-sync-copy{min-width:118px}
 body.procura-v2 .auth-sync-copy b,body.procura-v2 .auth-sync-copy small{display:block}
-body.procura-v2 .auth-sync-copy b{color:#ddd3ca;font-size:9px}
-body.procura-v2 .auth-sync-copy small{margin-top:2px;color:#8c827a;font-size:8px}
-body.procura-v2 .auth-card{position:relative;overflow:hidden;padding:31px;border:1px solid rgba(243,237,230,.14);border-radius:16px;background:linear-gradient(145deg,rgba(27,24,21,.98),rgba(17,15,13,.98));box-shadow:0 28px 70px rgba(0,0,0,.42);animation:surface-in .45s ease both}
+body.procura-v2 .auth-sync-copy b{color:#2b1b14;font-size:9px}
+body.procura-v2 .auth-sync-copy small{margin-top:2px;color:#74645b;font-size:8px}
+body.procura-v2 .auth-card{position:relative;overflow:hidden;padding:31px;border:1px solid rgba(64,42,31,.203);border-radius:16px;background:linear-gradient(145deg,rgba(255,255,255,.98),rgba(250,247,244,.98));box-shadow:0 28px 70px rgba(50,29,20,0.151);animation:surface-in .45s ease both}
 body.procura-v2 .auth-card:before{position:absolute;top:-110px;right:-80px;width:210px;height:210px;border-radius:50%;content:"";pointer-events:none;background:rgba(156,49,33,.17);filter:blur(35px)}
 body.procura-v2 .auth-card>*{position:relative}
-body.procura-v2 .auth-card h2{margin:7px 0;color:#f2ebe4;font-size:25px;font-weight:720;letter-spacing:-.05em}
-body.procura-v2 .auth-card>p{margin:0 0 21px;color:#a69c93;font-size:11px}
-body.procura-v2 .auth-switch{display:flex;gap:4px;margin-bottom:18px;padding:4px;border:1px solid rgba(243,237,230,.08);border-radius:9px;background:#100e0d}
-body.procura-v2 .auth-switch button{flex:1;min-height:34px;border:0;border-radius:6px;color:#a69c93;background:transparent;font-size:11px;font-weight:660;transition:background .18s ease,color .18s ease}
-body.procura-v2 .auth-switch button.active{color:#f0e7df;background:#26201c;box-shadow:0 2px 8px rgba(0,0,0,.22)}
+body.procura-v2 .auth-card h2{margin:7px 0;color:#2b1b14;font-size:25px;font-weight:720;letter-spacing:-.05em}
+body.procura-v2 .auth-card>p{margin:0 0 21px;color:#74645b;font-size:11px}
+body.procura-v2 .auth-switch{display:flex;gap:4px;margin-bottom:18px;padding:4px;border:1px solid rgba(64,42,31,.116);border-radius:9px;background:#f7f3ef}
+body.procura-v2 .auth-switch button{flex:1;min-height:34px;border:0;border-radius:6px;color:#74645b;background:transparent;font-size:11px;font-weight:660;transition:background .18s ease,color .18s ease}
+body.procura-v2 .auth-switch button.active{color:#2b1b14;background:#f3ece7;box-shadow:0 2px 8px rgba(50,29,20,0.079)}
 body.procura-v2 .field{display:grid;gap:7px;margin:12px 0}
-body.procura-v2 .field label{color:#c9beb5;font-size:10px;font-weight:680}
-body.procura-v2 .field input,body.procura-v2 .field select,body.procura-v2 .search-field input{width:100%;height:43px;padding:0 12px;border:1px solid rgba(243,237,230,.15);border-radius:8px;color:#f3ede6;background:#100f0e;font-size:12px;transition:border-color .18s ease,box-shadow .18s ease}
-body.procura-v2 input::placeholder{color:#776e67}
+body.procura-v2 .field label{color:#5f5048;font-size:10px;font-weight:680}
+body.procura-v2 .field input,body.procura-v2 .field select,body.procura-v2 .search-field input{width:100%;height:43px;padding:0 12px;border:1px solid rgba(64,42,31,.217);border-radius:8px;color:#2b1b14;background:#faf8f5;font-size:12px;transition:border-color .18s ease,box-shadow .18s ease}
+body.procura-v2 input::placeholder{color:#74645b}
 body.procura-v2 .field input:focus,body.procura-v2 .field select:focus,body.procura-v2 .search-field input:focus{border-color:rgba(194,79,57,.75);box-shadow:0 0 0 3px rgba(156,49,33,.12);outline:0}
-body.procura-v2 .form-error{min-height:18px;margin:8px 0;color:#d38a7a;font-size:11px}
+body.procura-v2 .form-error{min-height:18px;margin:8px 0;color:#9C3121;font-size:11px}
 body.procura-v2 .auth-submit{width:100%;margin-top:4px}
-body.procura-v2 .auth-note{margin-top:15px;color:#877d74;text-align:center;font-size:9px}
+body.procura-v2 .auth-note{margin-top:15px;color:#74645b;text-align:center;font-size:9px}
 body.procura-v2 .app-layout{display:flex;min-height:100vh}
-body.procura-v2 .app-sidebar{position:fixed;inset:0 auto 0 0;z-index:25;display:flex;flex-direction:column;width:244px;padding:22px 16px 16px;border-right:1px solid rgba(243,237,230,.085);background:rgba(12,11,10,.94);backdrop-filter:blur(16px)}
+body.procura-v2 .app-sidebar{position:fixed;inset:0 auto 0 0;z-index:25;display:flex;flex-direction:column;width:244px;padding:22px 16px 16px;border-right:1px solid rgba(64,42,31,.123);background:rgba(255,255,255,.93);backdrop-filter:blur(16px)}
 body.procura-v2 .sidebar-brand{display:flex;align-items:center;justify-content:space-between;padding:0 8px 30px}
-body.procura-v2 .sidebar-label{margin:0 9px 10px;color:#776f68;font-size:8px;font-weight:800;letter-spacing:.16em;text-transform:uppercase}
+body.procura-v2 .sidebar-label{margin:0 9px 10px;color:#74645b;font-size:8px;font-weight:800;letter-spacing:.16em;text-transform:uppercase}
 body.procura-v2 .sidebar-nav{display:grid;gap:5px}
-body.procura-v2 .sidebar-link{display:flex;align-items:center;gap:10px;min-height:40px;padding:0 10px;border:1px solid transparent;border-radius:8px;color:#a79d94;background:transparent;text-align:left;font-size:11px;font-weight:620;transition:background .18s ease,color .18s ease,border-color .18s ease}
-body.procura-v2 .sidebar-link:hover{color:#e8dfd7;background:rgba(255,255,255,.04)}
-body.procura-v2 .sidebar-link.active{border-color:rgba(194,79,57,.2);color:#ead4cd;background:linear-gradient(90deg,rgba(156,49,33,.16),rgba(156,49,33,.04))}
-body.procura-v2 .sidebar-link .nav-mark{display:grid;place-items:center;width:23px;height:23px;border:1px solid rgba(243,237,230,.11);border-radius:6px;color:#bc6653;background:rgba(255,255,255,.025)}
+body.procura-v2 .sidebar-link{display:flex;align-items:center;gap:10px;min-height:40px;padding:0 10px;border:1px solid transparent;border-radius:8px;color:#5f5048;background:transparent;text-align:left;font-size:11px;font-weight:620;transition:background .18s ease,color .18s ease,border-color .18s ease}
+body.procura-v2 .sidebar-link:hover{color:#2b1b14;background:rgba(57,37,27,.022)}
+body.procura-v2 .sidebar-link.active{border-color:rgba(194,79,57,.2);color:#2b1b14;background:linear-gradient(90deg,rgba(156,49,33,.16),rgba(156,49,33,.04))}
+body.procura-v2 .sidebar-link .nav-mark{display:grid;place-items:center;width:23px;height:23px;border:1px solid rgba(64,42,31,.160);border-radius:6px;color:#9C3121;background:rgba(57,37,27,.014)}
 body.procura-v2 .sidebar-link.active .nav-mark{border-color:rgba(194,79,57,.3);background:rgba(156,49,33,.12)}
-body.procura-v2 .nav-count{margin-left:auto;color:#8b8178;font-size:9px;font-variant-numeric:tabular-nums}
-body.procura-v2 .sidebar-guidance{margin-top:26px;padding:14px;border:1px solid rgba(243,237,230,.09);border-radius:10px;background:linear-gradient(145deg,rgba(255,255,255,.035),rgba(255,255,255,.012))}
+body.procura-v2 .nav-count{margin-left:auto;color:#74645b;font-size:9px;font-variant-numeric:tabular-nums}
+body.procura-v2 .sidebar-guidance{margin-top:26px;padding:14px;border:1px solid rgba(64,42,31,.131);border-radius:10px;background:linear-gradient(145deg,rgba(57,37,27,.019),rgba(57,37,27,.007))}
 body.procura-v2 .sidebar-guidance small{color:#9d665a;font-size:8px;font-weight:800;letter-spacing:.13em}
-body.procura-v2 .sidebar-guidance b{display:block;margin:9px 0 4px;color:#e4d8cf;font-size:11px}
-body.procura-v2 .sidebar-guidance p{margin:0;color:#948a82;font-size:9px;line-height:1.65}
+body.procura-v2 .sidebar-guidance b{display:block;margin:9px 0 4px;color:#2b1b14;font-size:11px}
+body.procura-v2 .sidebar-guidance p{margin:0;color:#74645b;font-size:9px;line-height:1.65}
 body.procura-v2 .sidebar-spacer{flex:1}
 body.procura-v2 .sidebar-account{position:relative;margin-top:16px;padding-top:14px;border-top:1px solid var(--line)}
-body.procura-v2 .profile-trigger{display:flex;width:100%;align-items:center;gap:9px;padding:7px;border:0;border-radius:9px;color:#e9e1d9;background:transparent;text-align:left;transition:background .18s ease}
-body.procura-v2 .profile-trigger:hover{background:rgba(255,255,255,.055)}
-body.procura-v2 .avatar{display:grid;place-items:center;flex:0 0 32px;width:32px;height:32px;border:1px solid rgba(194,79,57,.25);border-radius:9px;color:#d18a78;background:rgba(156,49,33,.12);font-size:10px;font-weight:800}
+body.procura-v2 .profile-trigger{display:flex;width:100%;align-items:center;gap:9px;padding:7px;border:0;border-radius:9px;color:#2b1b14;background:transparent;text-align:left;transition:background .18s ease}
+body.procura-v2 .profile-trigger:hover{background:rgba(57,37,27,.030)}
+body.procura-v2 .avatar{display:grid;place-items:center;flex:0 0 32px;width:32px;height:32px;border:1px solid rgba(194,79,57,.25);border-radius:9px;color:#9C3121;background:rgba(156,49,33,.12);font-size:10px;font-weight:800}
 body.procura-v2 .profile-copy{display:grid;min-width:0;flex:1}
-body.procura-v2 .profile-name{overflow:hidden;color:#e6ddd5;font-size:10px;font-weight:670;text-overflow:ellipsis;white-space:nowrap}
-body.procura-v2 .profile-company{overflow:hidden;margin-top:2px;color:#8f857c;font-size:8px;text-overflow:ellipsis;white-space:nowrap}
-body.procura-v2 .profile-chevron{color:#958b82;font-size:12px}
-body.procura-v2 .profile-menu{position:absolute;right:0;bottom:52px;left:0;z-index:10;padding:12px;border:1px solid rgba(243,237,230,.13);border-radius:10px;background:#1a1714;box-shadow:0 16px 36px rgba(0,0,0,.44)}
-body.procura-v2 .profile-menu strong{color:#eee5dc;font-size:10px}
-body.procura-v2 .profile-menu p{margin:4px 0 8px;color:#a2978d;font-size:9px;overflow-wrap:anywhere}
-body.procura-v2 .profile-menu button{width:100%;padding:8px;border:0;border-radius:6px;color:#d4c9c0;background:transparent;text-align:left;font-size:10px}
-body.procura-v2 .profile-menu button:hover{color:#f2e8e1;background:rgba(255,255,255,.055)}
+body.procura-v2 .profile-name{overflow:hidden;color:#2b1b14;font-size:10px;font-weight:670;text-overflow:ellipsis;white-space:nowrap}
+body.procura-v2 .profile-company{overflow:hidden;margin-top:2px;color:#74645b;font-size:8px;text-overflow:ellipsis;white-space:nowrap}
+body.procura-v2 .profile-chevron{color:#74645b;font-size:12px}
+body.procura-v2 .profile-menu{position:absolute;right:0;bottom:52px;left:0;z-index:10;padding:12px;border:1px solid rgba(64,42,31,.189);border-radius:10px;background:#ffffff;box-shadow:0 16px 36px rgba(50,29,20,0.158)}
+body.procura-v2 .profile-menu strong{color:#2b1b14;font-size:10px}
+body.procura-v2 .profile-menu p{margin:4px 0 8px;color:#74645b;font-size:9px;overflow-wrap:anywhere}
+body.procura-v2 .profile-menu button{width:100%;padding:8px;border:0;border-radius:6px;color:#2b1b14;background:transparent;text-align:left;font-size:10px}
+body.procura-v2 .profile-menu button:hover{color:#2b1b14;background:rgba(57,37,27,.030)}
 body.procura-v2 .app-workspace{min-width:0;flex:1;margin-left:244px}
-body.procura-v2 .app-topbar{position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;gap:15px;height:64px;padding:0 clamp(20px,4vw,52px);border-bottom:1px solid rgba(243,237,230,.08);background:rgba(11,10,9,.85);backdrop-filter:blur(18px)}
-body.procura-v2 .topbar-path{display:flex;align-items:center;gap:9px;color:#82786f;font-size:9px}
-body.procura-v2 .topbar-path strong{color:#d1c7be;font-weight:630}
+body.procura-v2 .app-topbar{position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;gap:15px;height:64px;padding:0 clamp(20px,4vw,52px);border-bottom:1px solid rgba(64,42,31,.116);background:rgba(255,255,255,.92);backdrop-filter:blur(18px)}
+body.procura-v2 .topbar-path{display:flex;align-items:center;gap:9px;color:#74645b;font-size:9px}
+body.procura-v2 .topbar-path strong{color:#2b1b14;font-weight:630}
 body.procura-v2 .topbar-right{display:flex;align-items:center;gap:13px}
-body.procura-v2 .cloud-state{display:flex;align-items:center;gap:7px;color:#9a9087;font-size:9px}
+body.procura-v2 .cloud-state{display:flex;align-items:center;gap:7px;color:#74645b;font-size:9px}
 body.procura-v2 .cloud-state i{width:6px;height:6px;border-radius:50%;background:#b64c38;box-shadow:0 0 0 4px rgba(156,49,33,.12)}
 body.procura-v2 .app-main{width:min(1440px,100%);margin:auto;padding:38px clamp(22px,4vw,58px) 64px}
 body.procura-v2 .app-heading{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:25px}
-body.procura-v2 .app-heading h1{margin:7px 0 4px;color:#f0e9e2;font-size:clamp(29px,3vw,40px);font-weight:730;line-height:1.1;letter-spacing:-.065em}
-body.procura-v2 .app-heading p{max-width:610px;margin:0;color:#a89e95;font-size:11px;line-height:1.7}
+body.procura-v2 .app-heading h1{margin:7px 0 4px;color:#2b1b14;font-size:clamp(29px,3vw,40px);font-weight:730;line-height:1.1;letter-spacing:-.065em}
+body.procura-v2 .app-heading p{max-width:610px;margin:0;color:#5f5048;font-size:11px;line-height:1.7}
 body.procura-v2 .heading-actions,body.procura-v2 .detail-actions{display:flex;align-items:center;justify-content:flex-end;flex-wrap:wrap;gap:8px}
 body.procura-v2 .metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:11px;margin:0 0 22px}
-body.procura-v2 .metric{position:relative;overflow:hidden;min-height:100px;padding:16px 18px;border:1px solid rgba(243,237,230,.11);border-radius:11px;background:linear-gradient(135deg,rgba(255,255,255,.035),rgba(255,255,255,.012));box-shadow:0 8px 25px rgba(0,0,0,.15);transition:transform .22s ease,border-color .22s ease,box-shadow .22s ease}
-body.procura-v2 .metric:hover{transform:translateY(-2px);border-color:rgba(194,79,57,.27);box-shadow:0 16px 35px rgba(0,0,0,.25)}
-body.procura-v2 .metric-label{color:#9d938a;font-size:8px;font-weight:800;letter-spacing:.12em}
-body.procura-v2 .metric-value{display:flex;align-items:baseline;gap:8px;margin-top:7px;color:#eee7df;font-size:27px;font-weight:740;letter-spacing:-.06em}
-body.procura-v2 .metric-caption{color:#8d837a;font-size:9px;font-weight:480;letter-spacing:0}
+body.procura-v2 .metric{position:relative;overflow:hidden;min-height:100px;padding:16px 18px;border:1px solid rgba(64,42,31,.160);border-radius:11px;background:linear-gradient(135deg,rgba(57,37,27,.019),rgba(57,37,27,.007));box-shadow:0 8px 25px rgba(50,29,20,0.054);transition:transform .22s ease,border-color .22s ease,box-shadow .22s ease}
+body.procura-v2 .metric:hover{transform:translateY(-2px);border-color:rgba(194,79,57,.27);box-shadow:0 16px 35px rgba(50,29,20,0.090)}
+body.procura-v2 .metric-label{color:#74645b;font-size:8px;font-weight:800;letter-spacing:.12em}
+body.procura-v2 .metric-value{display:flex;align-items:baseline;gap:8px;margin-top:7px;color:#2b1b14;font-size:27px;font-weight:740;letter-spacing:-.06em}
+body.procura-v2 .metric-caption{color:#74645b;font-size:9px;font-weight:480;letter-spacing:0}
 body.procura-v2 .workspace-grid{display:grid;grid-template-columns:minmax(0,1fr) 270px;align-items:start;gap:14px}
-body.procura-v2 .section-card,body.procura-v2 .opportunity-panel{min-width:0;padding:20px;border:1px solid rgba(243,237,230,.11);border-radius:12px;background:linear-gradient(150deg,rgba(24,21,18,.95),rgba(17,15,13,.95));box-shadow:0 10px 32px rgba(0,0,0,.22)}
+body.procura-v2 .section-card,body.procura-v2 .opportunity-panel{min-width:0;padding:20px;border:1px solid rgba(64,42,31,.160);border-radius:12px;background:linear-gradient(150deg,rgba(255,255,255,.98),rgba(250,247,244,.97));box-shadow:0 10px 32px rgba(50,29,20,0.079)}
 body.procura-v2 .panel-heading,body.procura-v2 .section-card-head{display:flex;align-items:flex-end;justify-content:space-between;gap:18px;margin-bottom:16px}
-body.procura-v2 .panel-heading h2,body.procura-v2 .section-card-head h2{margin:5px 0 3px;color:#ece4dc;font-size:16px;font-weight:700;letter-spacing:-.035em}
-body.procura-v2 .panel-heading p,body.procura-v2 .section-card-head p{margin:0;color:#988e85;font-size:10px;line-height:1.65}
+body.procura-v2 .panel-heading h2,body.procura-v2 .section-card-head h2{margin:5px 0 3px;color:#2b1b14;font-size:16px;font-weight:700;letter-spacing:-.035em}
+body.procura-v2 .panel-heading p,body.procura-v2 .section-card-head p{margin:0;color:#74645b;font-size:10px;line-height:1.65}
 body.procura-v2 .toolbar{display:flex;align-items:center;justify-content:space-between;gap:14px;margin:0 0 10px}
-body.procura-v2 .toolbar h2{margin:0;color:#e8e0d8;font-size:14px;font-weight:680}
+body.procura-v2 .toolbar h2{margin:0;color:#2b1b14;font-size:14px;font-weight:680}
 body.procura-v2 .search-field{position:relative;display:block;max-width:260px;flex:1}
-body.procura-v2 .search-field .icon{position:absolute;top:11px;left:11px;width:15px;height:15px;color:#82786f}
-body.procura-v2 .search-field input{height:37px;padding-left:34px;border-color:rgba(243,237,230,.11);background:#100f0e;font-size:10px}
+body.procura-v2 .search-field .icon{position:absolute;top:11px;left:11px;width:15px;height:15px;color:#74645b}
+body.procura-v2 .search-field input{height:37px;padding-left:34px;border-color:rgba(64,42,31,.160);background:#faf8f5;font-size:10px}
 body.procura-v2 .opportunity-list{display:grid;gap:7px}
-body.procura-v2 .op-card{position:relative;display:grid;grid-template-columns:minmax(0,1fr) auto auto 22px;align-items:center;gap:15px;min-height:76px;padding:14px 13px;border:1px solid rgba(243,237,230,.075);border-radius:9px;color:#e9e1d9;background:rgba(255,255,255,.018);cursor:pointer;transition:transform .2s ease,border-color .2s ease,background .2s ease,box-shadow .2s ease}
-body.procura-v2 .op-card:hover,.op-card.pointer-active{transform:translateY(-2px);border-color:rgba(194,79,57,.34);background:rgba(156,49,33,.055);box-shadow:0 14px 30px rgba(0,0,0,.25)}
-body.procura-v2 .op-card:focus-visible{outline:2px solid #c26755;outline-offset:3px}
+body.procura-v2 .op-card{position:relative;display:grid;grid-template-columns:minmax(0,1fr) auto auto 22px;align-items:center;gap:15px;min-height:76px;padding:14px 13px;border:1px solid rgba(64,42,31,.109);border-radius:9px;color:#2b1b14;background:rgba(57,37,27,.010);cursor:pointer;transition:transform .2s ease,border-color .2s ease,background .2s ease,box-shadow .2s ease}
+body.procura-v2 .op-card:hover,.op-card.pointer-active{transform:translateY(-2px);border-color:rgba(194,79,57,.34);background:rgba(156,49,33,.055);box-shadow:0 14px 30px rgba(50,29,20,0.090)}
+body.procura-v2 .op-card:focus-visible{outline:2px solid #9C3121;outline-offset:3px}
 body.procura-v2 .op-main{display:flex;align-items:center;gap:12px;min-width:0}
-body.procura-v2 .op-card-mark{display:grid;place-items:center;flex:0 0 38px;width:38px;height:40px;border:1px solid rgba(194,79,57,.22);border-radius:8px;color:#c97967;background:rgba(156,49,33,.09)}
+body.procura-v2 .op-card-mark{display:grid;place-items:center;flex:0 0 38px;width:38px;height:40px;border:1px solid rgba(194,79,57,.22);border-radius:8px;color:#9C3121;background:rgba(156,49,33,.09)}
 body.procura-v2 .op-card-mark svg{width:18px}
 body.procura-v2 .op-copy{min-width:0}
-body.procura-v2 .op-name{overflow:hidden;color:#ece4dc;font-size:11px;font-weight:680;text-overflow:ellipsis;white-space:nowrap}
-body.procura-v2 .op-file{overflow:hidden;margin-top:4px;color:#8f857d;font-size:9px;text-overflow:ellipsis;white-space:nowrap}
-body.procura-v2 .op-stat{color:#b1a79f;font-size:9px;white-space:nowrap}
-body.procura-v2 .decision-pill{display:inline-flex;align-items:center;gap:5px;padding:4px 7px;border:1px solid rgba(243,237,230,.11);border-radius:5px;color:#a99f96;background:rgba(255,255,255,.03);font-size:8px;font-weight:690;white-space:nowrap}
-body.procura-v2 .decision-pill.ready{border-color:rgba(194,79,57,.27);color:#cd8c7c;background:rgba(156,49,33,.1)}
+body.procura-v2 .op-name{overflow:hidden;color:#2b1b14;font-size:11px;font-weight:680;text-overflow:ellipsis;white-space:nowrap}
+body.procura-v2 .op-file{overflow:hidden;margin-top:4px;color:#74645b;font-size:9px;text-overflow:ellipsis;white-space:nowrap}
+body.procura-v2 .op-stat{color:#5f5048;font-size:9px;white-space:nowrap}
+body.procura-v2 .decision-pill{display:inline-flex;align-items:center;gap:5px;padding:4px 7px;border:1px solid rgba(64,42,31,.160);border-radius:5px;color:#5f5048;background:rgba(57,37,27,.017);font-size:8px;font-weight:690;white-space:nowrap}
+body.procura-v2 .decision-pill.ready{border-color:rgba(194,79,57,.27);color:#9C3121;background:rgba(156,49,33,.1)}
 body.procura-v2 .open-arrow{display:grid;place-items:center;color:#8f5144;transition:transform .2s ease,color .2s ease}
-body.procura-v2 .op-card:hover .open-arrow{transform:translateX(3px);color:#cf806e}
+body.procura-v2 .op-card:hover .open-arrow{transform:translateX(3px);color:#9C3121}
 body.procura-v2 .dashboard-rail{display:grid;gap:12px}
-body.procura-v2 .rail-card{padding:17px;border:1px solid rgba(243,237,230,.1);border-radius:11px;background:linear-gradient(145deg,rgba(255,255,255,.035),rgba(255,255,255,.012))}
+body.procura-v2 .rail-card{padding:17px;border:1px solid rgba(64,42,31,.145);border-radius:11px;background:linear-gradient(145deg,rgba(57,37,27,.019),rgba(57,37,27,.007))}
 body.procura-v2 .rail-kicker{color:#9d665a;font-size:8px;font-weight:800;letter-spacing:.13em;text-transform:uppercase}
-body.procura-v2 .rail-card h3{margin:9px 0 5px;color:#e7dfd7;font-size:13px;font-weight:690;letter-spacing:-.025em}
-body.procura-v2 .rail-card p{margin:0;color:#9b9188;font-size:9px;line-height:1.7}
+body.procura-v2 .rail-card h3{margin:9px 0 5px;color:#2b1b14;font-size:13px;font-weight:690;letter-spacing:-.025em}
+body.procura-v2 .rail-card p{margin:0;color:#74645b;font-size:9px;line-height:1.7}
 body.procura-v2 .review-progress{display:flex;align-items:center;gap:13px;margin:13px 0 9px}
-body.procura-v2 .progress-ring{--progress:0%;position:relative;display:grid;place-items:center;flex:0 0 52px;width:52px;height:52px;border-radius:50%;background:conic-gradient(#9C3121 var(--progress),rgba(243,237,230,.1) var(--progress))}
-body.procura-v2 .progress-ring:before{position:absolute;inset:5px;border-radius:50%;content:"";background:#171411}
-body.procura-v2 .progress-ring strong{position:relative;color:#e6dcd4;font-size:10px}
+body.procura-v2 .progress-ring{--progress:0%;position:relative;display:grid;place-items:center;flex:0 0 52px;width:52px;height:52px;border-radius:50%;background:conic-gradient(#9C3121 var(--progress),rgba(64,42,31,.145) var(--progress))}
+body.procura-v2 .progress-ring:before{position:absolute;inset:5px;border-radius:50%;content:"";background:#faf8f5}
+body.procura-v2 .progress-ring strong{position:relative;color:#2b1b14;font-size:10px}
 body.procura-v2 .progress-copy strong,body.procura-v2 .progress-copy small{display:block}
-body.procura-v2 .progress-copy strong{color:#e6ddd5;font-size:10px}
-body.procura-v2 .progress-copy small{margin-top:3px;color:#938981;font-size:8px}
+body.procura-v2 .progress-copy strong{color:#2b1b14;font-size:10px}
+body.procura-v2 .progress-copy small{margin-top:3px;color:#74645b;font-size:8px}
 body.procura-v2 .rail-rule{height:1px;margin:13px 0;border:0;background:var(--line)}
 body.procura-v2 .sample-callout{display:flex;flex-direction:column;align-items:flex-start;gap:11px}
 body.procura-v2 .sample-callout .btn{align-self:stretch}
-body.procura-v2 .empty-state{padding:34px 20px;border:1px dashed rgba(243,237,230,.16);border-radius:10px;text-align:center;background:rgba(255,255,255,.012)}
-body.procura-v2 .empty-icon{display:grid;place-items:center;width:40px;height:40px;margin:0 auto 12px;border:1px solid rgba(194,79,57,.24);border-radius:11px;color:#cb7e6b;background:rgba(156,49,33,.09)}
-body.procura-v2 .empty-state h3{margin:0 0 6px;color:#e7dfd7;font-size:13px}
-body.procura-v2 .empty-state p{max-width:390px;margin:0 auto 15px;color:#9e948b;font-size:10px;line-height:1.7}
-body.procura-v2 .demo-link{margin-left:8px;border:0;color:#c27b69;background:transparent;font-size:10px;text-decoration:underline;text-underline-offset:3px}
-body.procura-v2 .breadcrumb{display:flex;align-items:center;gap:10px;margin-bottom:21px;color:#82786f;font-size:9px}
-body.procura-v2 .breadcrumb button{display:inline-flex;align-items:center;gap:6px;border:0;color:#b1a69d;background:transparent;font-size:9px}
-body.procura-v2 .breadcrumb button:hover{color:#eadfd6}
+body.procura-v2 .empty-state{padding:34px 20px;border:1px dashed rgba(64,42,31,.232);border-radius:10px;text-align:center;background:rgba(57,37,27,.007)}
+body.procura-v2 .empty-icon{display:grid;place-items:center;width:40px;height:40px;margin:0 auto 12px;border:1px solid rgba(194,79,57,.24);border-radius:11px;color:#9C3121;background:rgba(156,49,33,.09)}
+body.procura-v2 .empty-state h3{margin:0 0 6px;color:#2b1b14;font-size:13px}
+body.procura-v2 .empty-state p{max-width:390px;margin:0 auto 15px;color:#74645b;font-size:10px;line-height:1.7}
+body.procura-v2 .demo-link{margin-left:8px;border:0;color:#9C3121;background:transparent;font-size:10px;text-decoration:underline;text-underline-offset:3px}
+body.procura-v2 .breadcrumb{display:flex;align-items:center;gap:10px;margin-bottom:21px;color:#74645b;font-size:9px}
+body.procura-v2 .breadcrumb button{display:inline-flex;align-items:center;gap:6px;border:0;color:#5f5048;background:transparent;font-size:9px}
+body.procura-v2 .breadcrumb button:hover{color:#2b1b14}
 body.procura-v2 .detail-heading{align-items:flex-start;padding-bottom:21px;border-bottom:1px solid var(--line)}
 body.procura-v2 .detail-heading h1{max-width:850px;overflow-wrap:anywhere}
-body.procura-v2 .detail-meta{display:flex;flex-wrap:wrap;gap:8px 17px;margin-top:11px;color:#958b82;font-size:9px}
+body.procura-v2 .detail-meta{display:flex;flex-wrap:wrap;gap:8px 17px;margin-top:11px;color:#74645b;font-size:9px}
 body.procura-v2 .detail-meta span+span{position:relative}
 body.procura-v2 .detail-meta span+span:before{position:absolute;top:50%;left:-10px;width:3px;height:3px;border-radius:50%;content:"";background:#9C3121}
 body.procura-v2 .source-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:17px 0}
-body.procura-v2 .source-card{min-width:0;padding:17px;border:1px solid rgba(243,237,230,.105);border-radius:11px;background:linear-gradient(150deg,rgba(27,24,21,.96),rgba(17,15,13,.96));box-shadow:0 8px 24px rgba(0,0,0,.18);transition:transform .22s ease,border-color .22s ease,box-shadow .22s ease}
-body.procura-v2 .source-card:hover{transform:translateY(-2px);border-color:rgba(194,79,57,.24);box-shadow:0 17px 34px rgba(0,0,0,.28)}
+body.procura-v2 .source-card{min-width:0;padding:17px;border:1px solid rgba(64,42,31,.152);border-radius:11px;background:linear-gradient(150deg,rgba(255,255,255,.98),rgba(250,247,244,.97));box-shadow:0 8px 24px rgba(50,29,20,0.065);transition:transform .22s ease,border-color .22s ease,box-shadow .22s ease}
+body.procura-v2 .source-card:hover{transform:translateY(-2px);border-color:rgba(194,79,57,.24);box-shadow:0 17px 34px rgba(50,29,20,0.101)}
 body.procura-v2 .source-card-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px}
-body.procura-v2 .source-card-head h2{margin:0;color:#e7dfd7;font-size:11px;font-weight:700}
-body.procura-v2 .source-file{display:flex;align-items:center;gap:10px;min-width:0;padding:10px;border:1px solid rgba(243,237,230,.085);border-radius:8px;background:rgba(255,255,255,.022)}
+body.procura-v2 .source-card-head h2{margin:0;color:#2b1b14;font-size:11px;font-weight:700}
+body.procura-v2 .source-file{display:flex;align-items:center;gap:10px;min-width:0;padding:10px;border:1px solid rgba(64,42,31,.123);border-radius:8px;background:rgba(57,37,27,.012)}
 body.procura-v2 .source-file strong,body.procura-v2 .source-file small{display:block;overflow:hidden;text-overflow:ellipsis}
-body.procura-v2 .source-file strong{color:#e6ddd5;font-size:10px;white-space:nowrap}
-body.procura-v2 .source-file small{margin-top:3px;color:#92877e;font-size:8px}
-body.procura-v2 .source-card details{color:#a9a097}
+body.procura-v2 .source-file strong{color:#2b1b14;font-size:10px;white-space:nowrap}
+body.procura-v2 .source-file small{margin-top:3px;color:#74645b;font-size:8px}
+body.procura-v2 .source-card details{color:#5f5048}
 body.procura-v2 .source-card summary{cursor:pointer}
-body.procura-v2 .source-text{max-height:230px;overflow:auto;margin-top:9px;padding:10px;border:1px solid rgba(243,237,230,.08);border-radius:7px;color:#aaa097;background:#100f0e;font-size:9px;white-space:pre-wrap}
-body.procura-v2 .upload-zone{position:relative;display:flex;min-height:118px;flex-direction:column;align-items:center;justify-content:center;gap:7px;padding:16px;border:1px dashed rgba(194,79,57,.45);border-radius:9px;color:#d39384;background:linear-gradient(145deg,rgba(156,49,33,.08),rgba(255,255,255,.015));text-align:center;cursor:pointer;transition:background .2s ease,border-color .2s ease,transform .2s ease}
+body.procura-v2 .source-text{max-height:230px;overflow:auto;margin-top:9px;padding:10px;border:1px solid rgba(64,42,31,.116);border-radius:7px;color:#5f5048;background:#faf8f5;font-size:9px;white-space:pre-wrap}
+body.procura-v2 .upload-zone{position:relative;display:flex;min-height:118px;flex-direction:column;align-items:center;justify-content:center;gap:7px;padding:16px;border:1px dashed rgba(194,79,57,.45);border-radius:9px;color:#9C3121;background:linear-gradient(145deg,rgba(156,49,33,.08),rgba(57,37,27,.008));text-align:center;cursor:pointer;transition:background .2s ease,border-color .2s ease,transform .2s ease}
 body.procura-v2 .upload-zone:hover,body.procura-v2 .upload-zone.dragging{transform:translateY(-1px);border-color:#c26755;background:rgba(156,49,33,.14)}
-body.procura-v2 .upload-zone strong{color:#e2d7ce;font-size:10px}
-body.procura-v2 .upload-zone small{max-width:390px;color:#9b9188;font-size:8px;line-height:1.6}
+body.procura-v2 .upload-zone strong{color:#2b1b14;font-size:10px}
+body.procura-v2 .upload-zone small{max-width:390px;color:#74645b;font-size:8px;line-height:1.6}
 body.procura-v2 .upload-zone input[type=file]{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:pointer}
 body.procura-v2 .upload-progress{display:flex;align-items:center;gap:12px;margin:11px 0 2px;padding:10px;border:1px solid rgba(194,79,57,.2);border-radius:8px;background:rgba(156,49,33,.07)}
-body.procura-v2 .progress-copy{min-width:0;flex:1;color:#a79d94;font-size:9px}
+body.procura-v2 .progress-copy{min-width:0;flex:1;color:#5f5048;font-size:9px}
 body.procura-v2 .progress-copy [data-progress-label]{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-body.procura-v2 .progress-track{height:4px;overflow:hidden;margin-top:7px;border-radius:9px;background:rgba(243,237,230,.1)}
+body.procura-v2 .progress-track{height:4px;overflow:hidden;margin-top:7px;border-radius:9px;background:rgba(64,42,31,.145)}
 body.procura-v2 .progress-track span{display:block;width:5%;height:100%;border-radius:9px;background:linear-gradient(90deg,#9C3121,#c26755);transition:width .25s ease}
 body.procura-v2 .proposal-list{display:grid;gap:5px}
-body.procura-v2 .proposal-line{display:grid;grid-template-columns:minmax(0,1fr) auto auto;align-items:center;gap:8px;padding:9px;border-bottom:1px solid rgba(243,237,230,.075)}
-body.procura-v2 .proposal-line strong{color:#e7dfd7;font-size:9px}
-body.procura-v2 .proposal-line small{display:block;overflow:hidden;margin-top:3px;color:#8f857c;font-size:8px;text-overflow:ellipsis;white-space:nowrap}
-body.procura-v2 .icon-action{display:grid;place-items:center;width:30px;height:30px;border:1px solid rgba(243,237,230,.1);border-radius:7px;color:#a99d94;background:rgba(255,255,255,.025);transition:border-color .18s ease,color .18s ease,background .18s ease}
-body.procura-v2 .icon-action:hover{border-color:rgba(194,79,57,.35);color:#d18a78;background:rgba(156,49,33,.1)}
+body.procura-v2 .proposal-line{display:grid;grid-template-columns:minmax(0,1fr) auto auto;align-items:center;gap:8px;padding:9px;border-bottom:1px solid rgba(64,42,31,.109)}
+body.procura-v2 .proposal-line strong{color:#2b1b14;font-size:9px}
+body.procura-v2 .proposal-line small{display:block;overflow:hidden;margin-top:3px;color:#74645b;font-size:8px;text-overflow:ellipsis;white-space:nowrap}
+body.procura-v2 .icon-action{display:grid;place-items:center;width:30px;height:30px;border:1px solid rgba(64,42,31,.145);border-radius:7px;color:#5f5048;background:rgba(57,37,27,.014);transition:border-color .18s ease,color .18s ease,background .18s ease}
+body.procura-v2 .icon-action:hover{border-color:rgba(194,79,57,.35);color:#9C3121;background:rgba(156,49,33,.1)}
 body.procura-v2 .section-card{margin:14px 0}
 body.procura-v2 .section-card-head{align-items:center;margin-bottom:16px}
 body.procura-v2 .section-card-head>div{min-width:0}
 body.procura-v2 .rank-list{display:grid;gap:7px}
-body.procura-v2 .rank-card{position:relative;display:grid;grid-template-columns:34px minmax(120px,1.1fr) minmax(100px,1fr) 74px minmax(105px,.8fr);align-items:center;gap:12px;min-height:72px;padding:11px 12px;border:1px solid rgba(243,237,230,.08);border-radius:9px;background:rgba(255,255,255,.018);transition:transform .2s ease,border-color .2s ease,background .2s ease,box-shadow .2s ease}
-body.procura-v2 .rank-card:hover{transform:translateY(-2px);border-color:rgba(194,79,57,.3);background:rgba(156,49,33,.045);box-shadow:0 13px 27px rgba(0,0,0,.23)}
-body.procura-v2 .rank-card.top{border-color:rgba(194,79,57,.27);background:linear-gradient(90deg,rgba(156,49,33,.1),rgba(255,255,255,.018) 48%)}
-body.procura-v2 .rank-number{display:grid;place-items:center;width:29px;height:29px;border:1px solid rgba(194,79,57,.24);border-radius:8px;color:#d08a78;background:rgba(156,49,33,.09);font-size:10px;font-weight:800}
-body.procura-v2 .rank-vendor strong{display:block;overflow:hidden;color:#eee6de;font-size:10px;text-overflow:ellipsis;white-space:nowrap}
-body.procura-v2 .rank-vendor small{display:block;margin-top:4px;color:#92887f;font-size:8px}
-body.procura-v2 .rank-coverage{height:5px;overflow:hidden;border-radius:9px;background:rgba(243,237,230,.1)}
+body.procura-v2 .rank-card{position:relative;display:grid;grid-template-columns:34px minmax(120px,1.1fr) minmax(100px,1fr) 74px minmax(105px,.8fr);align-items:center;gap:12px;min-height:72px;padding:11px 12px;border:1px solid rgba(64,42,31,.116);border-radius:9px;background:rgba(57,37,27,.010);transition:transform .2s ease,border-color .2s ease,background .2s ease,box-shadow .2s ease}
+body.procura-v2 .rank-card:hover{transform:translateY(-2px);border-color:rgba(194,79,57,.3);background:rgba(156,49,33,.045);box-shadow:0 13px 27px rgba(50,29,20,0.083)}
+body.procura-v2 .rank-card.top{border-color:rgba(194,79,57,.27);background:linear-gradient(90deg,rgba(156,49,33,.1),rgba(57,37,27,.010) 48%)}
+body.procura-v2 .rank-number{display:grid;place-items:center;width:29px;height:29px;border:1px solid rgba(194,79,57,.24);border-radius:8px;color:#9C3121;background:rgba(156,49,33,.09);font-size:10px;font-weight:800}
+body.procura-v2 .rank-vendor strong{display:block;overflow:hidden;color:#2b1b14;font-size:10px;text-overflow:ellipsis;white-space:nowrap}
+body.procura-v2 .rank-vendor small{display:block;margin-top:4px;color:#74645b;font-size:8px}
+body.procura-v2 .rank-coverage{height:5px;overflow:hidden;border-radius:9px;background:rgba(64,42,31,.145)}
 body.procura-v2 .rank-coverage span{display:block;height:100%;border-radius:inherit;background:linear-gradient(90deg,#72251b,#c26755)}
-body.procura-v2 .rank-score{color:#eadfd6;font-size:12px;font-weight:760;text-align:right}
-body.procura-v2 .rank-score small{display:block;margin-top:3px;color:#8e847b;font-size:7px;font-weight:520}
+body.procura-v2 .rank-score{color:#2b1b14;font-size:12px;font-weight:760;text-align:right}
+body.procura-v2 .rank-score small{display:block;margin-top:3px;color:#74645b;font-size:7px;font-weight:520}
 body.procura-v2 .rank-right{display:flex;align-items:center;justify-content:flex-end;gap:7px}
-body.procura-v2 .hardgate{color:#d08a78;font-size:8px;font-weight:740}
-body.procura-v2 .status-badge{display:inline-flex;align-items:center;gap:5px;padding:4px 7px;border:1px solid rgba(243,237,230,.13);border-radius:5px;color:#c3b8ae;background:rgba(255,255,255,.03);font-size:8px;font-weight:780;letter-spacing:.045em}
+body.procura-v2 .hardgate{color:#9C3121;font-size:8px;font-weight:740}
+body.procura-v2 .status-badge{display:inline-flex;align-items:center;gap:5px;padding:4px 7px;border:1px solid rgba(64,42,31,.189);border-radius:5px;color:#5f5048;background:rgba(57,37,27,.017);font-size:8px;font-weight:780;letter-spacing:.045em}
 body.procura-v2 .status-badge:before{width:5px;height:5px;border-radius:50%;content:"";background:currentColor}
-body.procura-v2 .status-badge.verified{border-color:rgba(194,79,57,.24);color:#cf8c7b;background:rgba(156,49,33,.08)}
-body.procura-v2 .status-badge.partial{border-color:rgba(243,237,230,.13);color:#b2a89f;background:rgba(255,255,255,.025)}
-body.procura-v2 .status-badge.gap{border-color:rgba(194,79,57,.4);color:#d38372;background:rgba(156,49,33,.13)}
+body.procura-v2 .status-badge.verified{border-color:rgba(194,79,57,.24);color:#9C3121;background:rgba(156,49,33,.08)}
+body.procura-v2 .status-badge.partial{border-color:rgba(64,42,31,.189);color:#5f5048;background:rgba(57,37,27,.014)}
+body.procura-v2 .status-badge.gap{border-color:rgba(194,79,57,.4);color:#9C3121;background:rgba(156,49,33,.13)}
 body.procura-v2 .vendor-filter{display:flex;flex-wrap:wrap;gap:5px}
-body.procura-v2 .vendor-filter button{min-height:30px;padding:0 9px;border:1px solid rgba(243,237,230,.1);border-radius:7px;color:#aca199;background:rgba(255,255,255,.025);font-size:8px;transition:border-color .18s ease,color .18s ease,background .18s ease}
-body.procura-v2 .vendor-filter button:hover,body.procura-v2 .vendor-filter button.active{border-color:rgba(194,79,57,.35);color:#e4c6bd;background:rgba(156,49,33,.12)}
-body.procura-v2 .matrix-wrap{width:100%;overflow:auto;border:1px solid rgba(243,237,230,.09);border-radius:9px}
-body.procura-v2 .matrix{width:100%;min-width:820px;border-collapse:collapse;color:#d9d0c8;font-size:9px}
-body.procura-v2 .matrix th{position:sticky;top:0;padding:10px;text-align:left;color:#a3978e;background:#201c19;font-size:8px;font-weight:790;letter-spacing:.07em;text-transform:uppercase}
-body.procura-v2 .matrix td{max-width:300px;padding:11px 10px;border-top:1px solid rgba(243,237,230,.075);vertical-align:top;color:#c9beb5;line-height:1.65}
+body.procura-v2 .vendor-filter button{min-height:30px;padding:0 9px;border:1px solid rgba(64,42,31,.145);border-radius:7px;color:#5f5048;background:rgba(57,37,27,.014);font-size:8px;transition:border-color .18s ease,color .18s ease,background .18s ease}
+body.procura-v2 .vendor-filter button:hover,body.procura-v2 .vendor-filter button.active{border-color:rgba(194,79,57,.35);color:#2b1b14;background:rgba(156,49,33,.12)}
+body.procura-v2 .matrix-wrap{width:100%;overflow:auto;border:1px solid rgba(64,42,31,.131);border-radius:9px}
+body.procura-v2 .matrix{width:100%;min-width:820px;border-collapse:collapse;color:#2b1b14;font-size:9px}
+body.procura-v2 .matrix th{position:sticky;top:0;padding:10px;text-align:left;color:#74645b;background:#f4efeb;font-size:8px;font-weight:790;letter-spacing:.07em;text-transform:uppercase}
+body.procura-v2 .matrix td{max-width:300px;padding:11px 10px;border-top:1px solid rgba(64,42,31,.109);vertical-align:top;color:#5f5048;line-height:1.65}
 body.procura-v2 .matrix tr:hover td{background:rgba(156,49,33,.035)}
-body.procura-v2 .matrix select{max-width:140px;min-height:32px;padding:4px 7px;border:1px solid rgba(243,237,230,.14);border-radius:6px;color:#d8cec6;background:#141210;font-size:8px}
-body.procura-v2 .explain-note{margin-top:13px;padding:10px 12px;border-left:2px solid rgba(156,49,33,.65);color:#9c9289;background:rgba(156,49,33,.055);font-size:9px;line-height:1.75}
-body.procura-v2 .page-end{margin-top:22px;padding-top:13px;border-top:1px solid rgba(243,237,230,.07);color:#81776e;font-size:8px}
+body.procura-v2 .matrix select{max-width:140px;min-height:32px;padding:4px 7px;border:1px solid rgba(64,42,31,.203);border-radius:6px;color:#2b1b14;background:#ffffff;font-size:8px}
+body.procura-v2 .explain-note{margin-top:13px;padding:10px 12px;border-left:2px solid rgba(156,49,33,.65);color:#74645b;background:rgba(156,49,33,.055);font-size:9px;line-height:1.75}
+body.procura-v2 .page-end{margin-top:22px;padding-top:13px;border-top:1px solid rgba(64,42,31,.102);color:#74645b;font-size:8px}
 body.procura-v2 .modal-backdrop{position:fixed;inset:0;z-index:100;display:grid;place-items:center;padding:20px;background:rgba(4,4,3,.78);backdrop-filter:blur(8px)}
-body.procura-v2 .modal{width:min(540px,100%);max-height:min(90vh,850px);overflow:auto;padding:22px;border:1px solid rgba(243,237,230,.16);border-radius:14px;background:linear-gradient(150deg,#211d19,#13110f);box-shadow:0 32px 90px rgba(0,0,0,.6);animation:surface-in .22s ease both}
+body.procura-v2 .modal{width:min(540px,100%);max-height:min(90vh,850px);overflow:auto;padding:22px;border:1px solid rgba(64,42,31,.232);border-radius:14px;background:linear-gradient(150deg,#ffffff,#f8f5f2);box-shadow:0 32px 90px rgba(50,29,20,0.216);animation:surface-in .22s ease both}
 body.procura-v2 .modal-head{display:flex;align-items:flex-start;justify-content:space-between;gap:18px;margin-bottom:17px}
-body.procura-v2 .modal-head h2{margin:0;color:#f0e8e0;font-size:18px;font-weight:700;letter-spacing:-.04em}
-body.procura-v2 .modal-head p{margin:5px 0 0;color:#a79d94;font-size:10px;line-height:1.6}
-body.procura-v2 .modal-close{display:grid;place-items:center;flex:0 0 32px;width:32px;height:32px;border:1px solid rgba(243,237,230,.12);border-radius:7px;color:#c1b6ad;background:rgba(255,255,255,.025)}
+body.procura-v2 .modal-head h2{margin:0;color:#2b1b14;font-size:18px;font-weight:700;letter-spacing:-.04em}
+body.procura-v2 .modal-head p{margin:5px 0 0;color:#5f5048;font-size:10px;line-height:1.6}
+body.procura-v2 .modal-close{display:grid;place-items:center;flex:0 0 32px;width:32px;height:32px;border:1px solid rgba(64,42,31,.174);border-radius:7px;color:#5f5048;background:rgba(57,37,27,.014)}
 body.procura-v2 .modal-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:15px}
 body.procura-v2 .toast-stack{position:fixed;right:18px;bottom:18px;z-index:120;display:grid;gap:8px}
-body.procura-v2 .toast{max-width:min(390px,calc(100vw - 36px));padding:12px 14px;border:1px solid rgba(194,79,57,.35);border-radius:9px;color:#eadcd4;background:#201714;box-shadow:0 12px 30px rgba(0,0,0,.4);font-size:10px;animation:surface-in .2s ease both}
-body.procura-v2 .toast.error{border-color:rgba(194,79,57,.65);color:#e7b3a8}
+body.procura-v2 .toast{max-width:min(390px,calc(100vw - 36px));padding:12px 14px;border:1px solid rgba(194,79,57,.35);border-radius:9px;color:#2b1b14;background:#ffffff;box-shadow:0 12px 30px rgba(50,29,20,0.144);font-size:10px;animation:surface-in .2s ease both}
+body.procura-v2 .toast.error{border-color:rgba(194,79,57,.65);color:#9C3121}
 body.procura-v2 .spinner{width:14px;height:14px;border:2px solid rgba(255,255,255,.27);border-top-color:#f3ede6;border-radius:50%;animation:spin .8s linear infinite}
 body.procura-v2 .pointer-reactive{position:relative;transition:transform .22s cubic-bezier(.2,.8,.2,1),box-shadow .22s ease,border-color .2s ease,translate .25s cubic-bezier(.2,.8,.2,1)}
 body.procura-v2 .pointer-reactive:after{position:absolute;inset:0;z-index:0;border-radius:inherit;content:"";pointer-events:none;opacity:0;background:radial-gradient(180px circle at var(--pointer-x,50%) var(--pointer-y,50%),rgba(194,79,57,.11),transparent 70%);transition:opacity .18s ease}
@@ -361,10 +353,13 @@ body.procura-v2 .btn:hover .icon{animation:icon-nudge .3s ease}
 @keyframes tap-feedback{0%,100%{translate:0 0}40%{translate:0 -1px}70%{translate:0 0}}
 @keyframes icon-nudge{0%,100%{transform:translateX(0)}45%{transform:translateX(2px)}}
 @media(max-width:1080px){body.procura-v2 .app-sidebar{width:218px}body.procura-v2 .app-workspace{margin-left:218px}body.procura-v2 .workspace-grid{grid-template-columns:minmax(0,1fr) 230px}body.procura-v2 .rank-card{grid-template-columns:30px minmax(100px,1fr) minmax(75px,.8fr) 68px minmax(95px,.8fr);gap:8px}}
-@media(max-width:900px){body.procura-v2 .hero{grid-template-columns:1fr;min-height:unset;gap:62px;padding-top:74px}body.procura-v2 .hero-copy{max-width:760px}body.procura-v2 .preview-frame{width:min(620px,92%);margin:auto}body.procura-v2 .app-layout{display:block}body.procura-v2 .app-sidebar{position:sticky;inset:0 0 auto;width:100%;height:auto;min-height:60px;flex-direction:row;align-items:center;gap:18px;padding:10px 18px;border-right:0;border-bottom:1px solid rgba(243,237,230,.085)}body.procura-v2 .sidebar-brand{padding:0}body.procura-v2 .sidebar-label,body.procura-v2 .sidebar-guidance,body.procura-v2 .sidebar-spacer{display:none}body.procura-v2 .sidebar-nav{display:flex;flex:1;justify-content:center}body.procura-v2 .sidebar-account{margin:0;padding:0;border:0}body.procura-v2 .profile-company{display:none}body.procura-v2 .app-workspace{margin-left:0}body.procura-v2 .app-topbar{top:60px}.steps-head{align-items:flex-start;flex-direction:column}.auth-wrap{gap:36px}}
+@media(max-width:900px){body.procura-v2 .hero{grid-template-columns:1fr;min-height:unset;gap:62px;padding-top:74px}body.procura-v2 .hero-copy{max-width:760px}body.procura-v2 .preview-frame{width:min(620px,92%);margin:auto}body.procura-v2 .app-layout{display:block}body.procura-v2 .app-sidebar{position:sticky;inset:0 0 auto;width:100%;height:auto;min-height:60px;flex-direction:row;align-items:center;gap:18px;padding:10px 18px;border-right:0;border-bottom:1px solid rgba(64,42,31,.123)}body.procura-v2 .sidebar-brand{padding:0}body.procura-v2 .sidebar-label,body.procura-v2 .sidebar-guidance,body.procura-v2 .sidebar-spacer{display:none}body.procura-v2 .sidebar-nav{display:flex;flex:1;justify-content:center}body.procura-v2 .sidebar-account{margin:0;padding:0;border:0}body.procura-v2 .profile-company{display:none}body.procura-v2 .app-workspace{margin-left:0}body.procura-v2 .app-topbar{top:60px}.steps-head{align-items:flex-start;flex-direction:column}.auth-wrap{gap:36px}}
 @media(max-width:720px){body.procura-v2 .public-nav{height:64px;padding-inline:18px}body.procura-v2 .public-nav nav{display:none}body.procura-v2 .hero{gap:48px;padding:59px 21px 65px}body.procura-v2 .hero-copy h1{font-size:clamp(44px,11vw,68px)}body.procura-v2 .hero-copy>p{font-size:14px}body.procura-v2 .preview-card{padding:18px}body.procura-v2 .hero-float--rfp{left:-8px}body.procura-v2 .hero-float--evidence{right:-9px}body.procura-v2 .steps{padding:56px 22px}body.procura-v2 .steps-grid{grid-template-columns:1fr;gap:18px;border-top:1px solid var(--line)}body.procura-v2 .step,body.procura-v2 .step+.step{padding:17px 0 0;border-left:0}body.procura-v2 .public-footer{flex-direction:column}body.procura-v2 .auth-wrap{grid-template-columns:1fr;padding:34px 20px;gap:24px}body.procura-v2 .auth-story{padding:7px 0}body.procura-v2 .auth-story h1{font-size:clamp(34px,9vw,49px)}body.procura-v2 .auth-step{margin-top:12px}body.procura-v2 .auth-sync{margin-top:17px}body.procura-v2 .auth-card{padding:23px}body.procura-v2 .app-sidebar{gap:11px;padding:9px 12px}body.procura-v2 .sidebar-brand{gap:8px}body.procura-v2 .app-sidebar .logo{font-size:16px}body.procura-v2 .app-sidebar .logo-mark{width:29px;height:29px}body.procura-v2 .sidebar-nav{justify-content:flex-start}body.procura-v2 .sidebar-link{min-height:36px;padding:0 8px;font-size:9px}body.procura-v2 .sidebar-link .nav-mark{width:20px;height:20px}body.procura-v2 .profile-trigger{padding:5px}body.procura-v2 .profile-name{max-width:76px;font-size:8px}body.procura-v2 .app-topbar{height:52px;padding-inline:15px}body.procura-v2 .cloud-state{display:none}body.procura-v2 .app-main{padding:26px 15px 42px}body.procura-v2 .app-heading{align-items:flex-start;flex-direction:column;margin-bottom:18px}body.procura-v2 .heading-actions{justify-content:flex-start}body.procura-v2 .metrics{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}body.procura-v2 .metric{min-height:86px;padding:12px}body.procura-v2 .metric:last-child{grid-column:1/-1}body.procura-v2 .workspace-grid{grid-template-columns:1fr}body.procura-v2 .dashboard-rail{grid-template-columns:repeat(2,minmax(0,1fr))}body.procura-v2 .section-card,body.procura-v2 .opportunity-panel{padding:15px}body.procura-v2 .op-card{grid-template-columns:minmax(0,1fr) auto 20px;gap:9px;padding:11px}body.procura-v2 .op-stat:nth-of-type(2){display:none}body.procura-v2 .op-stat{font-size:8px}body.procura-v2 .detail-heading{gap:12px}body.procura-v2 .detail-actions{justify-content:flex-start}body.procura-v2 .source-grid{grid-template-columns:1fr}body.procura-v2 .rank-card{grid-template-columns:30px minmax(0,1fr) 70px;gap:8px}body.procura-v2 .rank-coverage{grid-column:2;grid-row:2}.rank-card .rank-score{grid-column:3;grid-row:1}.rank-right{grid-column:3;grid-row:2;flex-direction:column;align-items:flex-end}.rank-card .status-badge{grid-column:2;grid-row:3}.rank-card .hardgate{grid-column:1/-1}body.procura-v2 .section-card-head{align-items:flex-start;flex-direction:column}body.procura-v2 .vendor-filter{width:100%}body.procura-v2 .matrix{min-width:780px}}
 @media(max-width:460px){body.procura-v2 .brand-v2{display:none}body.procura-v2 .app-sidebar{gap:7px;padding-inline:8px}body.procura-v2 .sidebar-link{gap:5px;padding-inline:6px;font-size:8px}body.procura-v2 .sidebar-link .nav-mark{display:none}body.procura-v2 .profile-name{display:none}body.procura-v2 .profile-chevron{display:none}body.procura-v2 .topbar-path{font-size:8px}body.procura-v2 .topbar-right .btn{min-height:31px;padding-inline:8px;font-size:8px}body.procura-v2 .dashboard-rail{grid-template-columns:1fr}body.procura-v2 .toolbar{align-items:flex-start;flex-direction:column}body.procura-v2 .search-field{max-width:none;width:100%}body.procura-v2 .op-card{grid-template-columns:minmax(0,1fr) 18px}body.procura-v2 .op-stat{display:none}body.procura-v2 .op-main{gap:8px}body.procura-v2 .op-card-mark{flex-basis:30px;width:30px;height:32px}body.procura-v2 .hero-float{min-width:145px;padding:8px}body.procura-v2 .hero-float--rfp{top:10%;left:-6px}body.procura-v2 .hero-float--evidence{right:-7px;bottom:9%}body.procura-v2 .preview-scene{min-height:265px}body.procura-v2 .vendor-row{grid-template-columns:23px minmax(0,1fr) auto;gap:6px}body.procura-v2 .vendor-row .mini-decision{display:none}body.procura-v2 .modal-actions .btn{flex:1}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}body.procura-v2 *,body.procura-v2 *:before,body.procura-v2 *:after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}body.procura-v2 .pointer-reactive{translate:none!important}body.procura-v2 .pointer-reactive:after{display:none}}
+
+body.procura-v2 .btn-primary,body.procura-v2 .logo-mark{color:#fff!important}
+body.procura-v2 ::selection{background:#9C3121;color:#fff5ef}
 </style>
 </head>
 <body class="procura-v2">
