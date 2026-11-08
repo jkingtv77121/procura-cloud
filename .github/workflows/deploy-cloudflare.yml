@@ -1,7 +1,7 @@
-name: Deploy Procura to Cloudflare
+name: Deploy Procura V2 to Cloudflare
 on:
   push:
-    branches: [main]
+    branches: [procura-v2]
   pull_request:
   workflow_dispatch:
 permissions:
@@ -54,4 +54,3 @@ jobs:
       - name: Verify deployed health
         if: steps.cloudflare.outputs.ready == 'true'
         run: node scripts/smoke-cloudflare.mjs
-

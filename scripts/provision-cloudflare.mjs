@@ -4,9 +4,9 @@ import { resolve } from "node:path";
 const accountId = process.env.CLOUDFLARE_ACCOUNT_ID;
 const apiToken = process.env.CLOUDFLARE_API_TOKEN;
 const accountSuffix = accountId?.slice(0, 6).toLowerCase();
-const databaseName = "procura-db-" + accountSuffix;
-const bucketName = "procura-files-" + accountSuffix;
-const workerName = "procura-cloud";
+const databaseName = "procura-v2-db";
+const bucketName = "procura-v2-files";
+const workerName = "procura-v2";
 
 if (!accountId || !apiToken) {
   throw new Error("Set CLOUDFLARE_ACCOUNT_ID and CLOUDFLARE_API_TOKEN in GitHub Actions secrets.");
@@ -111,5 +111,4 @@ const config = {
 await writeFile(resolve(process.cwd(), "wrangler.jsonc"), JSON.stringify(config, null, 2) + "\n", "utf8");
 const publicUrl = "https://" + workerName + "." + subdomain + ".workers.dev";
 await writeFile(resolve(process.cwd(), ".procura-cloudflare-url"), publicUrl + "\n", "utf8");
-console.log("Prepared Procura Worker configuration for " + publicUrl);
-
+console.log("Prepared isolated Procura V2 Worker configuration for " + publicUrl);
