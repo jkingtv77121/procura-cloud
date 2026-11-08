@@ -54,4 +54,3 @@ jobs:
       - name: Verify deployed health
         if: steps.cloudflare.outputs.ready == 'true'
         run: node scripts/smoke-cloudflare.mjs
-

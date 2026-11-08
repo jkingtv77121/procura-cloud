@@ -28,4 +28,3 @@ for (let attempt = 0; attempt < 30; attempt += 1) {
 }
 
 throw new Error("Procura did not become healthy after deployment: " + lastFailure);
-

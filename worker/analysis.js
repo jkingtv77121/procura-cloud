@@ -376,4 +376,3 @@ export const DEMO_CASE = {
     },
   ],
 };
-

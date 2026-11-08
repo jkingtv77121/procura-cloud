@@ -388,7 +388,13 @@ async function analyzeOpportunity(env, account, opportunity) {
     const row = rows.results[index];
     let reviews = {};
     try { reviews = JSON.parse(row.review_json || "{}"); } catch {}
-    const result = analyzeVendor(rfpText, proposalTexts[index], row.vendor_name, reviews);
+    let result;
+    try {
+      result = analyzeVendor(rfpText, proposalTexts[index], row.vendor_name, reviews);
+    } catch (error) {
+      console.error("Procura proposal analysis failed:", row.id, row.filename, error?.stack || error);
+      fail(422, "Could not compare “" + row.filename + "”. Remove and re-upload this proposal, then try again.", "PROPOSAL_ANALYSIS_FAILED");
+    }
     result.vendor_name = row.vendor_name;
     result.requirements = result.requirements.map((item, index) => ({
       ...item,

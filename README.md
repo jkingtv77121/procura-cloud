@@ -48,7 +48,7 @@ npm run build
 npm run validate
 ```
 
-The current automated suite has 22 passing tests. See `docs/Procura-Project-Summary.md` for the QA scope, production smoke-check results, deployment details, and limitations. The updated hackathon deck is included with the separate project release materials.
+The automated suite has 23 passing tests. It covers account security, document extraction, matching and ranking, reviewer edits, exports, and recovery from simulated storage failures. See `docs/Procura-Project-Summary.md` for QA scope, deployment details, and known limitations. The updated hackathon deck is included with the separate project release materials.
 
 ## Hosting on your Cloudflare account
 
@@ -59,7 +59,7 @@ Before the first deployment, add these **repository secrets** in GitHub under **
 - `CLOUDFLARE_ACCOUNT_ID`: the account ID shown in Cloudflare Workers & Pages.
 - `CLOUDFLARE_API_TOKEN`: an account-scoped Cloudflare API token with Workers Scripts Write, D1 Write, and Workers R2 Storage Write access. Keep the token in GitHub Secrets; do not commit it or paste it into chat.
 
-After saving both secrets, push any commit to `main` or select **Actions → Deploy Procura to Cloudflare → Run workflow** for the first deployment. Future pushes to `main` deploy automatically. The workflow provisions an account-specific Procura D1 database and R2 bucket; if the account has no `workers.dev` subdomain, it requests a project-specific one.
+Run **Actions → Deploy Procura to Cloudflare → Run workflow** after saving the secrets. Future pushes to `main` deploy automatically. The workflow provisions an account-specific Procura D1 database and R2 bucket; if the account has no `workers.dev` subdomain, it requests a project-specific one.
 
 This creates new storage in your Cloudflare account. Existing accounts, opportunities, and uploads from the current managed host do not copy over automatically. Keep using the current live site until you verify the Cloudflare deployment; users will need to create accounts on the new host unless data is migrated separately. The `.openai/hosting.json` file remains for the existing Sites-hosted copy.
 
@@ -75,4 +75,3 @@ See Cloudflare's [GitHub Actions guide](https://developers.cloudflare.com/worker
 - `tests/procura.test.mjs`: automated API and analysis tests
 - `scripts/`: build and release validation scripts
 - `dist/`: packaged deployment output
-

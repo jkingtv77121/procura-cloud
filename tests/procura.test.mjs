@@ -552,4 +552,3 @@ test("partial cloud writes and D1 batch failures roll back without orphaning or 
   const retry = await call("/api/opportunities/" + rfp.id + "/analyze", { method: "POST", body: {}, cookie });
   assert.equal(retry.status, 200);
 });
-

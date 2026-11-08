@@ -112,4 +112,3 @@ await writeFile(resolve(process.cwd(), "wrangler.jsonc"), JSON.stringify(config,
 const publicUrl = "https://" + workerName + "." + subdomain + ".workers.dev";
 await writeFile(resolve(process.cwd(), ".procura-cloudflare-url"), publicUrl + "\n", "utf8");
 console.log("Prepared Procura Worker configuration for " + publicUrl);
-

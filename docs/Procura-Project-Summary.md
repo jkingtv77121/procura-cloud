@@ -48,11 +48,11 @@ This is a transparent text-matching aid. It does not infer award probability or 
 
 ## Verification performed
 
-**Automated backend suite: 22 passed, 0 failed.** Coverage includes account creation and duplicate emails, additional device sessions, sign-out, login throttling, account isolation, PDF/DOCX handling, OCR handoff and invalid-PDF errors, multi-vendor scoring and ranking, reviewer overrides, CSV export, downloads and deletion, and cleanup/transaction behavior after failed writes.
+**Automated backend suite: 23 passed, 0 failed.** Coverage includes account creation and duplicate emails, additional device sessions, sign-out, login throttling, account isolation, PDF/DOCX handling, OCR handoff and invalid-PDF errors, multi-vendor scoring and ranking, reviewer overrides, CSV export, downloads and deletion, and cleanup/transaction behavior after failed writes.
 
 **Local browser QA:** synthetic scanned PDFs were uploaded for both an RFP and vendor proposals. OCR extracted text, a strong vendor ranked above a weak vendor, a reviewer override changed the decision and resetting it restored automatic scoring, and CSV export contained the vendor evidence rows. Search, profile/sign-out, reload persistence in the mock workspace, and malformed-PDF cancel/retry flows were also exercised.
 
-**Production smoke check:** the public landing and sign-in pages loaded, `/health` reported the service, database, and file store as healthy, and no production errors were logged during the checked period. No real customer credentials or documents were used in production. The full synthetic upload and comparison walkthrough ran locally against a mock workspace, so it is not a production end-to-end acceptance test.
+**Live test:** the public landing and sign-in pages loaded, `/health` reported the service, database, and file store as healthy, and a synthetic Charlotte parking RFP plus five vendor proposal PDFs uploaded, extracted, and compared successfully. The test created a dedicated smoke-test account and opportunity in the cloud workspace and left them in place. No real customer credentials or customer records were used. This test confirms the supplied file set worked at that time, not that every possible PDF or proposal will work.
 
 ## Run and host the source
 
