@@ -48,7 +48,7 @@ npm run build
 npm run validate
 ```
 
-The current automated suite has 22 passing tests. See `docs/Procura-Project-Summary.md` for the QA scope, production smoke-check results, deployment details, and limitations. The updated hackathon deck is in `docs/Procura-Hackathon-Updated.pptx`.
+The current automated suite has 22 passing tests. See `docs/Procura-Project-Summary.md` for the QA scope, production smoke-check results, deployment details, and limitations. The updated hackathon deck is included with the separate project release materials.
 
 ## Hosting
 
