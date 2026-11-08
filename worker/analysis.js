@@ -244,17 +244,19 @@ function budgetEvidenceIsWithinCap(requirement, quote) {
 
 function explicitlyDenied(requirement, quote) {
   const haystack = normalize(quote);
+  const actionDenial = /\b(?:do not|does not|did not|don't|doesn't|didn't|cannot|can't|unable to|fails? to|failed to|will not|won't|never|not yet)\s+(?:currently\s+)?(?:meet|hold|provide|support|maintain|achieve|deliver|pass|comply|include|have|offer|commit|reach|satisfy|fulfill|possess|carry|certify|certified|compliant|available|current|valid|met|satisfied|provided|maintained|held|included|present|be certified|be compliant|be available|attain)\b/.test(haystack)
+    || /\b(?:is|are|was|were|remain|remains)\s+not\s+(?:certified|compliant|available|current|valid|met|satisfied|provided|maintained|held|included|present)\b/.test(haystack);
+  const missingEvidence = /\b(?:no|without|lack|lacks|lacking)\s+(?:(?:a|any|the|current|valid|active|written|documented|independent)\s+){0,2}(?:iso\s*27001|soc\s*2|certification|certificate|audit report|report|references?|policy|sla|staff|personnel|cv(?:s)?|security controls|encryption)\b/.test(haystack);
+  if (actionDenial || missingEvidence) return true;
+
+  // A requirement term appearing near an unrelated "no" or "not" is not
+  // enough to call a proposal noncompliant (for example, "no hidden fees").
   const terms = [...new Set(tokens(requirement.title).flatMap(groupFor))].filter((term) => term.length > 2);
   for (const term of terms) {
     const normalizedTerm = normalize(term);
     if (!normalizedTerm || !haystack.includes(normalizedTerm)) continue;
-    let index = haystack.indexOf(normalizedTerm);
-    while (index >= 0) {
-      const nearby = haystack.slice(Math.max(0, index - 48), index + normalizedTerm.length + 5);
-      if (!/\bnot\s+(?:just|only)\b/.test(nearby)
-        && /\b(no|not|never|without|cannot|unable|failed|do not|does not|doesnt|dont|not yet)\b/.test(nearby)) return true;
-      index = haystack.indexOf(normalizedTerm, index + normalizedTerm.length);
-    }
+    const escaped = normalizedTerm.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    if (new RegExp("\\b(?:does not|do not|did not|cannot|can't|unable to|fails? to|failed to|not yet)\\s+(?:\\w+\\s+){0,3}" + escaped + "\\b").test(haystack)) return true;
   }
   return false;
 }
@@ -272,6 +274,7 @@ export function analyzeVendor(rfpText, proposalText, vendorName, overrides = {})
     const evidenceQuote = matrixEvidence?.quote || best?.sentence || "";
     const denied = overlap > 0 && explicitlyDenied(requirement, evidenceQuote);
     let status = matrixEvidence?.status || (overlap === 0 || denied ? "GAP" : enoughTerms && best.ratio >= 0.34 ? "VERIFIED" : "PARTIAL");
+    if (denied && matrixEvidence?.status === "VERIFIED") status = "GAP";
     const numericFailure = overlap > 0 && numericMismatch(requirement, evidenceQuote);
     if (numericFailure && requirement.is_hard_gate && matrixEvidence?.status) status = "GAP";
     else if (status === "PARTIAL" && budgetEvidenceIsWithinCap(requirement, evidenceQuote)) status = "VERIFIED";

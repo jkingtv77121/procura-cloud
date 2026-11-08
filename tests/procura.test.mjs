@@ -240,15 +240,15 @@ test("numbered compliance matrices preserve nine requirements and partials remai
   ].join("\n");
   const proposal = [
     "Compliance Matrix",
-    "M-1 ISO 27001 certificate is current. VERIFIED",
+    "M-1 ISO 27001 certificate is current. No expiry risk during the contract. VERIFIED",
     "M-2 SOC 2 Type II report attached. VERIFIED",
     "M-3 7 years of mobility experience. VERIFIED",
     "M-4 We commit to a 99.9% uptime SLA. PARTIAL: historical uptime was 99.85%. PARTIAL",
     "M-5 Two references are attached; a third is pending. PARTIAL",
-    "M-6 Go-live in 110 days. VERIFIED",
-    "M-7 Total price is $2.1M under the $2.5M cap. VERIFIED",
-    "M-8 Encryption in transit and at rest; data security policy attached. VERIFIED",
-    "M-9 Qualified staffing, key personnel, and CVs attached. VERIFIED",
+    "M-6 Go-live in 110 days. The plan includes a 10-day buffer, not 2 days. VERIFIED",
+    "M-7 Total price is $2.1M under the $2.5M cap. No hidden fees. VERIFIED",
+    "M-8 Encryption in transit and at rest; data security policy attached. Pen test found no critical findings. VERIFIED",
+    "M-9 Qualified staffing, key personnel, and CVs attached. No single point of failure. VERIFIED",
   ].join("\n");
   const requirements = extractRequirements(rfp);
   assert.equal(requirements.length, 9);
@@ -258,6 +258,16 @@ test("numbered compliance matrices preserve nine requirements and partials remai
   assert.equal(result.partial_count, 2);
   assert.equal(result.hard_gates_failed, 0);
   assert.equal(result.decision, "BID WITH CONDITIONS");
+  for (const requirement of result.requirements.filter((item) => ["req-1", "req-6", "req-7", "req-8", "req-9"].includes(item.id))) {
+    assert.equal(requirement.status, "VERIFIED");
+    assert.doesNotMatch(requirement.explanation, /not met/i);
+  }
+  const contradictoryProposal = proposal.replace(
+    "M-1 ISO 27001 certificate is current. No expiry risk during the contract. VERIFIED",
+    "M-1 ISO 27001 certification not yet certified. No certificate available. VERIFIED",
+  );
+  const contradictory = analyzeVendor(rfp, contradictoryProposal, "Contradictory vendor");
+  assert.equal(contradictory.requirements[0].status, "GAP");
 });
 
 test("negative and below-threshold language cannot pass a hard gate", () => {
