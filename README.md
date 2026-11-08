@@ -50,9 +50,20 @@ npm run validate
 
 The current automated suite has 22 passing tests. See `docs/Procura-Project-Summary.md` for the QA scope, production smoke-check results, deployment details, and limitations. The updated hackathon deck is included with the separate project release materials.
 
-## Hosting
+## Hosting on your Cloudflare account
 
-This project is prepared for Sites hosting. `.openai/hosting.json` names the configured project and D1 (`DB`) / R2 (`BUCKET`) bindings. Pending SQL migrations are applied by Sites before Worker updates. Publishing requires an authorized Sites environment connected to those resources. The included `dist` directory contains the build output.
+The GitHub repository includes a Cloudflare Workers deployment workflow. Each push to `main` runs the checks; once the Cloudflare secrets are present, the workflow creates or reuses a D1 database and R2 bucket, applies the SQL migrations, deploys the Worker, and checks `/health`. The public `workers.dev` URL appears in the GitHub Actions run summary.
+
+Before the first deployment, add these **repository secrets** in GitHub under **Settings → Secrets and variables → Actions**:
+
+- `CLOUDFLARE_ACCOUNT_ID`: the account ID shown in Cloudflare Workers & Pages.
+- `CLOUDFLARE_API_TOKEN`: an account-scoped Cloudflare API token with Workers Scripts Write, D1 Write, and Workers R2 Storage Write access. Keep the token in GitHub Secrets; do not commit it or paste it into chat.
+
+Run **Actions → Deploy Procura to Cloudflare → Run workflow** after saving the secrets. Future pushes to `main` deploy automatically. The workflow provisions an account-specific Procura D1 database and R2 bucket; if the account has no `workers.dev` subdomain, it requests a project-specific one.
+
+This creates new storage in your Cloudflare account. Existing accounts, opportunities, and uploads from the current managed host do not copy over automatically. Keep using the current live site until you verify the Cloudflare deployment; users will need to create accounts on the new host unless data is migrated separately. The `.openai/hosting.json` file remains for the existing Sites-hosted copy.
+
+See Cloudflare's [GitHub Actions guide](https://developers.cloudflare.com/workers/ci-cd/external-cicd/github-actions/), [D1 migration commands](https://developers.cloudflare.com/d1/wrangler-commands/), and [API token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/).
 
 ## Main files
 
