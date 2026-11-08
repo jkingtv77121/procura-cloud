@@ -1,2 +1,5 @@
 dist/
 site.tar.gz
+wrangler.jsonc
+.procura-cloudflare-url
+
