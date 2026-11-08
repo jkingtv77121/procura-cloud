@@ -1,9 +1,10 @@
-const STOP = new Set("a an and are as at be been being by can could did do does for from had has have how i in into is it its may might must of on or our shall should that the their then there these this to us was were will with within you your provide provides".split(" "));
+const STOP = new Set("a an and are as at be been being by can could did do does for from had has have how i in into is it its may might must of on or our shall should that the their then there these this to us was were will with within you your provide provides vendor platform proposer hold demonstrate report current covering management measured monthly excluding scheduled maintenance evidence expected include includes including total".split(" "));
 const GROUPS = [
   ["uptime", "availability", "service level", "sla"],
   ["security", "secure", "encryption", "encrypted", "data protection"],
   ["experience", "years", "track record", "case study"],
   ["references", "reference", "client", "customer"],
+  ["staff", "staffing", "personnel", "team", "cv", "cvs", "engineer", "engineers"],
   ["support", "helpdesk", "service desk", "24 7"],
   ["go live", "implementation", "deployment", "delivery", "timeline"],
   ["budget", "pricing", "price", "cost", "fees"],
@@ -51,6 +52,8 @@ function isHardGate(text) {
 }
 
 export function extractRequirements(rfpText) {
+  const numbered = extractNumberedMatrixRequirements(rfpText);
+  if (numbered.length >= 3) return numbered;
   const lines = String(rfpText || "").replace(/\r/g, "\n").split(/\n+/);
   const candidates = lines.flatMap(splitCandidateLine);
   const seen = new Set();
@@ -80,6 +83,52 @@ export function extractRequirements(rfpText) {
   return requirements;
 }
 
+function extractNumberedMatrixRequirements(rfpText) {
+  const source = String(rfpText || "").replace(/\r/g, "\n");
+  const section = source.match(/\b(?:\d+\s+)?mandatory\s*(?:&|and)\s*technical\s+requirements\b/i);
+  if (!section) return [];
+  const start = section.index + section[0].length;
+  const table = source.slice(start);
+  const heading = /\bID\s+Requirement\b/i.exec(table);
+  if (!heading) return [];
+  const rowsText = table.slice(heading.index + heading[0].length);
+  const ids = [...rowsText.matchAll(/\bM\s*-\s*(\d{1,2})\b/gi)];
+  const sequence = [];
+  let expected = 1;
+  for (const match of ids) {
+    const id = Number(match[1]);
+    if (id !== expected) continue;
+    sequence.push(match);
+    expected++;
+    if (expected > 9) break;
+  }
+  if (sequence.length < 3) return [];
+
+  const result = [];
+  for (let index = 0; index < sequence.length; index++) {
+    const match = sequence[index];
+    const end = sequence[index + 1]?.index ?? rowsText.length;
+    let title = rowsText.slice(match.index + match[0].length, end)
+      .replace(/\s+(?:Compliance|Technical|Mandatory|Commercial|Experience|Delivery)\s+(?:ISO\s*27001\s+Certificate|SOC\s*2\s+Type\s*II\s+Report|Case\s+study\s*\+\s*CVs|SLA\s*\/\s*uptime\s+history|3\s+references|Implementation\s+plan|Pricing\s+proposal|Data\s+Security\s+Policy|Staff\s+CVs)\b[\s\S]*$/i, "")
+      .replace(/[\n\t]+/g, " ")
+      .replace(/\s{2,}/g, " ")
+      .replace(/\s+([.,;])/g, "$1")
+      .trim();
+    if (title.length < 14 || title.length > 420) continue;
+    const category = categoryFor(title);
+    result.push({
+      id: "req-" + (result.length + 1),
+      source_ref: "M-" + match[1],
+      title: title.replace(/[.]+$/, ""),
+      category,
+      is_hard_gate: true,
+      weight: 2,
+      rfp_quote: title,
+    });
+  }
+  return result;
+}
+
 function groupFor(term) {
   for (const group of GROUPS) if (group.some((word) => normalize(word).split(" ").includes(term) || normalize(word).includes(term))) return group;
   return [term];
@@ -107,6 +156,40 @@ function quoteMatch(requirement, proposalText) {
   return { requiredTokens, best };
 }
 
+function proposalMatrixEvidence(proposalText, sourceRef) {
+  if (!sourceRef) return null;
+  const text = String(proposalText || "").replace(/\r/g, "\n");
+  const heading = /compliance\s+matrix/i.exec(text);
+  if (!heading) return null;
+  const matrix = text.slice(heading.index + heading[0].length);
+  const markers = [...matrix.matchAll(/\bM\s*-\s*(\d{1,2})\b/gi)];
+  let sequence = -1;
+  for (let index = 0; index + 8 < markers.length; index++) {
+    if (Number(markers[index][1]) !== 1) continue;
+    if (Array.from({ length: 9 }, (_, offset) => Number(markers[index + offset]?.[1])).every((id, offset) => id === offset + 1)) {
+      sequence = index;
+      break;
+    }
+  }
+  if (sequence < 0) return null;
+  const wanted = Number(String(sourceRef).match(/\d+/)?.[0]);
+  const targetIndex = sequence + wanted - 1;
+  const target = markers[targetIndex];
+  if (!target || Number(target[1]) !== wanted) return null;
+  const next = markers[targetIndex + 1];
+  let end = next?.index ?? matrix.length;
+  if (!next) {
+    const tailEnd = /\b(?:\d+\s+(?:technical\s+approach|implementation\s+plan|team|pricing|references|risks|timeline|budget|evaluation)|why\s+(?:partial|this\s+is)|note\s+for\s+proposers|appendix\s+[a-z])\b/i.exec(matrix.slice(target.index + target[0].length));
+    if (tailEnd) end = target.index + target[0].length + tailEnd.index;
+  }
+  const quote = matrix.slice(target.index, end).replace(/[\n\t]+/g, " ").replace(/\s{2,}/g, " ").trim().slice(0, 420);
+  const status = /\b(?:GAP|OVER\s+BUDGET|NOT\s+COMPLIANT|NON-?COMPLIANT)\b/i.test(quote) ? "GAP"
+    : /\bPARTIAL\b/i.test(quote) ? "PARTIAL"
+    : /\b(?:VERIFIED|COMPLIANT)\b/i.test(quote) ? "VERIFIED"
+    : null;
+  return quote.length >= 12 ? { quote, status } : null;
+}
+
 function numericMismatch(requirement, quote) {
   const requirementText = requirement.title.toLowerCase();
   const quoteText = String(quote || "").toLowerCase();
@@ -124,24 +207,39 @@ function numericMismatch(requirement, quote) {
   const responseCapacity = quoteText.match(/(\d[\d,]*(?:\.\d+)?)\s*(?:(?:active|concurrent|licensed|registered)\s+)*(?:users|students|seats|licenses|accounts)\b/i);
   if (reqCapacity && responseCapacity && Number(responseCapacity[1].replace(/,/g, "")) < Number(reqCapacity[1].replace(/,/g, ""))) return true;
 
-  const moneyAmount = (text) => {
-    const match = text.match(/(?:\$|\bUSD\s*)(\d[\d,]*(?:\.\d+)?)\s*(k|m|b|thousand|million|billion)?\b/i);
-    if (!match) return null;
+  const moneyAmounts = (text) => [...String(text || "").matchAll(/(?:\$|\bUSD\s*)(\d[\d,]*(?:\.\d+)?)\s*(k|m|b|thousand|million|billion)?\b/gi)].map((match) => {
     const amount = Number(match[1].replace(/,/g, ""));
     const multiplier = /^(?:k|thousand)$/i.test(match[2] || "") ? 1000
       : /^(?:m|million)$/i.test(match[2] || "") ? 1000000
       : /^(?:b|billion)$/i.test(match[2] || "") ? 1000000000
       : 1;
     return amount * multiplier;
-  };
+  });
   const maxBudget = /budget|price|pricing|cost|fee/i.test(requirementText)
     && /within|no more than|at most|maximum|max\.?|not exceed|under|below|up to/i.test(requirementText);
   if (maxBudget) {
-    const limit = moneyAmount(requirementText);
-    const proposed = moneyAmount(quoteText);
-    if (limit !== null && proposed !== null && proposed > limit) return true;
+    const limit = moneyAmounts(requirementText)[0];
+    const proposed = moneyAmounts(quoteText);
+    if (limit !== undefined && proposed.some((amount) => amount > limit)) return true;
   }
   return false;
+}
+
+function budgetEvidenceIsWithinCap(requirement, quote) {
+  const text = String(requirement?.title || "").toLowerCase();
+  if (!/budget|price|pricing|cost|fee/.test(text) || !/within|no more than|at most|maximum|max\.?|not exceed|under|below|up to/.test(text)) return false;
+  const amounts = [...String(quote || "").matchAll(/(?:\$|\bUSD\s*)(\d[\d,]*(?:\.\d+)?)\s*(k|m|b|thousand|million|billion)?\b/gi)].map((match) => {
+    const amount = Number(match[1].replace(/,/g, ""));
+    const multiplier = /^(?:k|thousand)$/i.test(match[2] || "") ? 1000
+      : /^(?:m|million)$/i.test(match[2] || "") ? 1000000
+      : /^(?:b|billion)$/i.test(match[2] || "") ? 1000000000
+      : 1;
+    return amount * multiplier;
+  });
+  const capMatch = text.match(/(?:\$|\bUSD\s*)(\d[\d,]*(?:\.\d+)?)\s*(k|m|b|thousand|million|billion)?\b/i);
+  if (!capMatch || amounts.length < 2) return false;
+  const cap = Number(capMatch[1].replace(/,/g, "")) * (/^(?:k|thousand)$/i.test(capMatch[2] || "") ? 1000 : /^(?:m|million)$/i.test(capMatch[2] || "") ? 1000000 : /^(?:b|billion)$/i.test(capMatch[2] || "") ? 1000000000 : 1);
+  return amounts.some((amount) => amount < cap) && amounts.every((amount) => amount <= cap);
 }
 
 function explicitlyDenied(requirement, quote) {
@@ -150,9 +248,13 @@ function explicitlyDenied(requirement, quote) {
   for (const term of terms) {
     const normalizedTerm = normalize(term);
     if (!normalizedTerm || !haystack.includes(normalizedTerm)) continue;
-    const index = haystack.indexOf(normalizedTerm);
-    const nearby = haystack.slice(Math.max(0, index - 48), index + normalizedTerm.length + 5);
-    if (/\b(no|not|never|without|cannot|unable|failed|do not|does not|doesnt|dont|not yet)\b/.test(nearby)) return true;
+    let index = haystack.indexOf(normalizedTerm);
+    while (index >= 0) {
+      const nearby = haystack.slice(Math.max(0, index - 48), index + normalizedTerm.length + 5);
+      if (!/\bnot\s+(?:just|only)\b/.test(nearby)
+        && /\b(no|not|never|without|cannot|unable|failed|do not|does not|doesnt|dont|not yet)\b/.test(nearby)) return true;
+      index = haystack.indexOf(normalizedTerm, index + normalizedTerm.length);
+    }
   }
   return false;
 }
@@ -164,22 +266,28 @@ export function analyzeVendor(rfpText, proposalText, vendorName, overrides = {})
   let hardGatesFailed = 0;
   const rows = requirements.map((requirement) => {
     const { requiredTokens, best } = quoteMatch(requirement, proposalText);
+    const matrixEvidence = proposalMatrixEvidence(proposalText, requirement.source_ref);
     const overlap = best?.matched.length || 0;
     const enoughTerms = requiredTokens.length <= 2 ? overlap >= 1 : overlap >= 2;
-    const denied = overlap > 0 && explicitlyDenied(requirement, best?.sentence);
-    let status = overlap === 0 || denied ? "GAP" : enoughTerms && best.ratio >= 0.34 ? "VERIFIED" : "PARTIAL";
-    if (status === "VERIFIED" && numericMismatch(requirement, best?.sentence)) status = "PARTIAL";
+    const evidenceQuote = matrixEvidence?.quote || best?.sentence || "";
+    const denied = overlap > 0 && explicitlyDenied(requirement, evidenceQuote);
+    let status = matrixEvidence?.status || (overlap === 0 || denied ? "GAP" : enoughTerms && best.ratio >= 0.34 ? "VERIFIED" : "PARTIAL");
+    const numericFailure = overlap > 0 && numericMismatch(requirement, evidenceQuote);
+    if (numericFailure && requirement.is_hard_gate && matrixEvidence?.status) status = "GAP";
+    else if (status === "PARTIAL" && budgetEvidenceIsWithinCap(requirement, evidenceQuote)) status = "VERIFIED";
+    else if (status === "VERIFIED" && numericFailure) status = "PARTIAL";
     const override = overrides[requirement.id];
     if (["VERIFIED", "PARTIAL", "GAP"].includes(override)) status = override;
     const points = status === "VERIFIED" ? 1 : status === "PARTIAL" ? 0.5 : 0;
     earned += points * requirement.weight;
     total += requirement.weight;
-    if (requirement.is_hard_gate && status !== "VERIFIED") hardGatesFailed++;
+    if (requirement.is_hard_gate && (status === "GAP" || (status === "PARTIAL" && numericFailure))) hardGatesFailed++;
     return {
       ...requirement,
       status,
-      proposal_quote: overlap ? best.sentence.slice(0, 420) : "",
+      proposal_quote: matrixEvidence?.quote || (overlap ? best.sentence.slice(0, 420) : ""),
       matched_terms: best?.matched || [],
+      source_status_label: matrixEvidence?.status || null,
       explanation: denied
         ? "The proposal text indicates this requirement is not met."
         : overlap
@@ -189,7 +297,8 @@ export function analyzeVendor(rfpText, proposalText, vendorName, overrides = {})
     };
   });
   const score = total ? Math.round(earned / total * 1000) / 10 : 0;
-  const decision = hardGatesFailed ? "NO-BID" : score >= 75 ? "BID" : score >= 50 ? "BID WITH CONDITIONS" : "NO-BID";
+  const hasExplicitConditions = rows.some((row) => row.source_status_label === "PARTIAL");
+  const decision = hardGatesFailed || score < 50 ? "NO-BID" : hasExplicitConditions || score < 75 ? "BID WITH CONDITIONS" : "BID";
   return {
     vendor_name: vendorName,
     score,
@@ -205,8 +314,20 @@ export function analyzeVendor(rfpText, proposalText, vendorName, overrides = {})
 }
 
 export function rankVendors(items) {
+  const price = (item) => {
+    const quote = item.requirements?.find((row) => /budget|price|pricing|cost/i.test(row.title || ""))?.proposal_quote || "";
+    const match = quote.match(/\btotal(?:\s+price)?\s+(?:is\s+)?\$?(\d[\d,.]*)\s*(k|m|b|thousand|million|billion)?\b/i);
+    if (!match) return Number.POSITIVE_INFINITY;
+    const amount = Number(match[1].replace(/,/g, ""));
+    return amount * (/^(?:k|thousand)$/i.test(match[2] || "") ? 1000 : /^(?:m|million)$/i.test(match[2] || "") ? 1000000 : /^(?:b|billion)$/i.test(match[2] || "") ? 1000000000 : 1);
+  };
+  const goLiveDays = (item) => {
+    const quote = item.requirements?.find((row) => /go.live|timeline|implementation/i.test(row.title || ""))?.proposal_quote || "";
+    const match = quote.match(/\bgo[- ]live\s+in\s+(\d+(?:\.\d+)?)\s+days?\b/i);
+    return match ? Number(match[1]) : Number.POSITIVE_INFINITY;
+  };
   return [...items]
-    .sort((a, b) => a.hard_gates_failed - b.hard_gates_failed || b.score - a.score || a.vendor_name.localeCompare(b.vendor_name))
+    .sort((a, b) => a.hard_gates_failed - b.hard_gates_failed || b.score - a.score || price(a) - price(b) || goLiveDays(a) - goLiveDays(b) || a.vendor_name.localeCompare(b.vendor_name))
     .map((item, index) => ({ ...item, rank: index + 1 }));
 }
 
@@ -252,3 +373,4 @@ export const DEMO_CASE = {
     },
   ],
 };
+

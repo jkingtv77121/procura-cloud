@@ -224,6 +224,42 @@ test("RFP requirement extraction splits a labeled list and preserves its languag
   assert.equal(requirements[0].is_hard_gate, true);
 });
 
+test("numbered compliance matrices preserve nine requirements and partials remain conditional", () => {
+  const rfp = [
+    "4 Mandatory & Technical Requirements",
+    "ID Requirement Category Evidence Expected",
+    "M-1 Vendor must hold ISO 27001 certification. Compliance ISO 27001 Certificate",
+    "M-2 Vendor must provide a current SOC 2 Type II report. Compliance SOC 2 Type II Report",
+    "M-3 Vendor must demonstrate 5+ years mobility experience. Mandatory Case study + CVs",
+    "M-4 Platform must meet a 99.9% uptime SLA. Technical SLA / uptime history",
+    "M-5 Vendor must provide at least 3 client references. Mandatory 3 references",
+    "M-6 Vendor must achieve go-live within 120 days. Technical Implementation plan",
+    "M-7 Total price must be within the budget cap $2.5M. Commercial Pricing proposal",
+    "M-8 Vendor must provide a data security / encryption policy. Compliance Data Security Policy",
+    "M-9 Vendor must provide qualified staffing and key personnel. Technical Staff CVs",
+  ].join("\n");
+  const proposal = [
+    "Compliance Matrix",
+    "M-1 ISO 27001 certificate is current. VERIFIED",
+    "M-2 SOC 2 Type II report attached. VERIFIED",
+    "M-3 7 years of mobility experience. VERIFIED",
+    "M-4 We commit to a 99.9% uptime SLA. PARTIAL: historical uptime was 99.85%. PARTIAL",
+    "M-5 Two references are attached; a third is pending. PARTIAL",
+    "M-6 Go-live in 110 days. VERIFIED",
+    "M-7 Total price is $2.1M under the $2.5M cap. VERIFIED",
+    "M-8 Encryption in transit and at rest; data security policy attached. VERIFIED",
+    "M-9 Qualified staffing, key personnel, and CVs attached. VERIFIED",
+  ].join("\n");
+  const requirements = extractRequirements(rfp);
+  assert.equal(requirements.length, 9);
+  assert.equal(requirements[8].source_ref, "M-9");
+  const result = analyzeVendor(rfp, proposal, "Summit Transit");
+  assert.equal(result.total_count, 9);
+  assert.equal(result.partial_count, 2);
+  assert.equal(result.hard_gates_failed, 0);
+  assert.equal(result.decision, "BID WITH CONDITIONS");
+});
+
 test("negative and below-threshold language cannot pass a hard gate", () => {
   const result = analyzeVendor(sampleRfp, weakProposal, "Weak Vendor");
   assert.equal(result.hard_gates_failed, 4);
@@ -506,3 +542,4 @@ test("partial cloud writes and D1 batch failures roll back without orphaning or 
   const retry = await call("/api/opportunities/" + rfp.id + "/analyze", { method: "POST", body: {}, cookie });
   assert.equal(retry.status, 200);
 });
+
