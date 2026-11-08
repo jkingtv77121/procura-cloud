@@ -1,0 +1,20 @@
+{
+  "version": "7",
+  "dialect": "sqlite",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1794121357206,
+      "tag": "0001_procura",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1794125413461,
+      "tag": "0002_pdf_extraction_method",
+      "breakpoints": true
+    }
+  ]
+}
